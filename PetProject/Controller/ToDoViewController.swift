@@ -9,11 +9,10 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 protocol ToDoViewControllerDelegate:AnyObject {
-    func update(text:String)
+    func update(taskPrimary:String,taskSecondary:String?)
 }
 class ToDoViewController: UIViewController{
     private var arrayTodo = [TodoModel]()
-    var arR = Array(repeating: "1", count: 200)
     private let heightCell:CGFloat = 80
     private let tableView: UITableView = {
         let table = UITableView()
@@ -25,8 +24,10 @@ class ToDoViewController: UIViewController{
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
-    func update(text:String)  {
-        arrayTodo.append(TodoModel(mainTask: text, detailTask: nil))
+    func update(taskPrimary:String,taskSecondary:String?)  {
+        arrayTodo.append(TodoModel(mainTask: taskPrimary, detailTask: taskSecondary))
+        print(taskPrimary)
+        print(taskSecondary)
         tableView.reloadData()
     }
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class ToDoViewController: UIViewController{
 extension ToDoViewController:ToDoViewControllerDelegate{
     @objc private func addNewNoteButtonPressed(){
         Vibration.light.vibrate()
-        let loadVC = deletecontroller()
+        let loadVC = NewTaskViewController()
         loadVC.delegate = self
         navigationController?.pushViewController(loadVC, animated: true)
     }
@@ -85,8 +86,12 @@ extension ToDoViewController:ToDoViewControllerDelegate{
 }
 
 extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arR.count
+        return arrayTodo.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightCell
@@ -94,7 +99,7 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoCell
 //        cell.labelText.text = arrayTodo[indexPath.row].mainTask
-        cell.labelText.text = arR[indexPath.row]
+        cell.labelText.text = arrayTodo[indexPath.row].taskPrimary
         return cell
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -116,7 +121,11 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: false) 
+        let newTaskVC = NewTaskViewController()
+        newTaskVC.textFieldTask.text = arrayTodo[indexPath.row].taskPrimary
+        newTaskVC.detailTextView.text = arrayTodo[indexPath.row].taskSecondary
+        navigationController?.pushViewController(newTaskVC, animated: true)
         
     }
 }

@@ -7,13 +7,20 @@
 
 import UIKit
 
-class TodoModel {
-    var mainTask:String
-    var detailTask:String?
+class TodoModel:Hashable {
+    static func == (lhs: TodoModel, rhs: TodoModel) -> Bool {
+        lhs.taskPrimary == rhs.taskPrimary
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(taskPrimary)
+    }
+    var taskPrimary:String
+    var taskSecondary:String?
     
     init(mainTask:String,detailTask:String?) {
-        self.mainTask = mainTask
-        self.detailTask = detailTask
+        self.taskPrimary = mainTask
+        self.taskSecondary = detailTask
     }
      
 }

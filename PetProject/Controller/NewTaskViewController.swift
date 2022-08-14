@@ -6,14 +6,16 @@
 //
 
 import UIKit
-
+protocol NewTaskDelegate: AnyObject {
+    func updateEdit(taskPrimary: String)
+}
 class NewTaskViewController: UIViewController {
-    
+    weak var delegate:ToDoViewControllerDelegate?
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    private let textFieldTask: CustomTextField = {
+     let textFieldTask: CustomTextField = {
         let textfield = CustomTextField()
-        textfield.customPlaceholder(placeholder: "Enter username")
+        textfield.customPlaceholder(placeholder: "Enter new task")
         return textfield
     }()
     private let labelPrimary: UILabel = {
@@ -33,7 +35,6 @@ class NewTaskViewController: UIViewController {
         label.text = "Create new task"
         label.sizeToFit()
         label.textColor = UIColor.Label.labelSecondary
-        
         label.font = UIFont(name: UIFont.urbanistExtraLight, size: 20)
         label.textColor = UIColor.Label.labelSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,10 +43,6 @@ class NewTaskViewController: UIViewController {
     let detailTextView: CustomTextView = {
         let view = CustomTextView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = """
-               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-               """
-      
         view.font = UIFont(name: UIFont.urbanistMedium, size: 18)
         view.textColor = UIColor.TextField.label
         return view
@@ -77,8 +74,6 @@ class NewTaskViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        view.backgroundColor = UIColor.Support.background
-        title = "Create new task"
         view.backgroundColor = UIColor.Support.background
         clearBackgroundNavigationBar()
         navItemSetupButton()
@@ -91,7 +86,21 @@ extension NewTaskViewController{
     private func navItemSetupButton() {
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self, action: #selector(popViewButtonPressed))
-        navigationItem.rightBarButtonItem = .addButton(systemNameIcon: imageSet.checkmark.rawValue, self, action: #selector(popViewButtonPressed))
+        navigationItem.rightBarButtonItem = .addButton(systemNameIcon: imageSet.checkmark.rawValue, self, action: #selector(saveButtonPressed))
+    }
+    @objc private func saveButtonPressed(sender: UIButton){
+        Vibration.light.vibrate()
+        guard let textField = textFieldTask.text,let textView = detailTextView.text,!textField.isEmpty else {
+            Vibration.error.vibrate()
+            let alertController = AlertController()
+            alertController.customAlert(text: "Ooops!!😔", destText: "Please enter your task", isHiddenActionButton: true)
+            alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            self.present(alertController, animated: true)
+            return
+        }
+        delegate?.update(taskPrimary: textField,taskSecondary: textView)
+        navigationController?.popViewController(animated: true)
     }
     @objc private func popViewButtonPressed(){
         Vibration.light.vibrate()
@@ -100,11 +109,9 @@ extension NewTaskViewController{
     private func makeConstraints(){
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         stackViewPrimary.translatesAutoresizingMaskIntoConstraints = false
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         labelPrimary.translatesAutoresizingMaskIntoConstraints = false
         textFieldTask.translatesAutoresizingMaskIntoConstraints = false
-        
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -121,7 +128,6 @@ extension NewTaskViewController{
         
         NSLayoutConstraint.activate([
             textFieldTask.heightAnchor.constraint(equalToConstant: 56),
-            
             detailTextView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2/3),
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),

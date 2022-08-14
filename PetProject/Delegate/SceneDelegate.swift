@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //cus
         
         
-        let viewController = NewTaskViewController()
+        let viewController = ToDoViewController()
         navController.viewControllers = [viewController]
         self.window = window
         window.rootViewController = navController
