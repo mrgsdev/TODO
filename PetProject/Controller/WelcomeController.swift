@@ -49,6 +49,7 @@ class WelcomeController: UIViewController {
     
     //MARK: Life Cycle
     override func viewDidLoad() {
+        //develop-second
         super.viewDidLoad()
         view.addSubview(backgroundImage)
         view.addSubview(stackView)
