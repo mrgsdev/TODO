@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let viewController = ToDoViewController()
             navController.viewControllers = [viewController]
         }else{
-
             let viewController = WelcomeController()
             navController.viewControllers = [viewController]
         }

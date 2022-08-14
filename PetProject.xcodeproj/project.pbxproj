@@ -46,6 +46,7 @@
 		426FE2E228A968BF0032FA83 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E128A968BF0032FA83 /* ToDoViewController.swift */; };
 		426FE2E428A968D30032FA83 /* deletecontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E328A968D30032FA83 /* deletecontroller.swift */; };
 		426FE2E628A968F20032FA83 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E528A968F20032FA83 /* TodoModel.swift */; };
+		42F0A8D428A9715400F36FBF /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A8D328A9715400F36FBF /* NewTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		426FE2E128A968BF0032FA83 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		426FE2E328A968D30032FA83 /* deletecontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deletecontroller.swift; sourceTree = "<group>"; };
 		426FE2E528A968F20032FA83 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		42F0A8D328A9715400F36FBF /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		B932CB04EDCC191FC1A23FAB /* Pods-PetProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.debug.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +164,7 @@
 				426FE2DF28A968AA0032FA83 /* DeleteAccountController.swift */,
 				426FE2E128A968BF0032FA83 /* ToDoViewController.swift */,
 				426FE2E328A968D30032FA83 /* deletecontroller.swift */,
+				42F0A8D328A9715400F36FBF /* NewTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				426FE2DA28A9686E0032FA83 /* ChangeEmailViewController.swift in Sources */,
 				4227C2B228A963CE0096428C /* Helper.swift in Sources */,
 				426FE2CE28A967470032FA83 /* AlertController.swift in Sources */,
+				42F0A8D428A9715400F36FBF /* NewTaskViewController.swift in Sources */,
 				4227C2B028A9632B0096428C /* WelcomeController.swift in Sources */,
 				4227C29928A962700096428C /* SceneDelegate.swift in Sources */,
 				426FE2D228A967990032FA83 /* ForgotController.swift in Sources */,
