@@ -9,21 +9,83 @@
 /* Begin PBXBuildFile section */
 		4227C29728A962700096428C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29628A962700096428C /* AppDelegate.swift */; };
 		4227C29928A962700096428C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29828A962700096428C /* SceneDelegate.swift */; };
-		4227C29B28A962700096428C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29A28A962700096428C /* ViewController.swift */; };
-		4227C29E28A962700096428C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4227C29C28A962700096428C /* Main.storyboard */; };
 		4227C2A028A962710096428C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4227C29F28A962710096428C /* Assets.xcassets */; };
 		4227C2A328A962710096428C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4227C2A128A962710096428C /* LaunchScreen.storyboard */; };
+		4227C2B028A9632B0096428C /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2AF28A9632B0096428C /* WelcomeController.swift */; };
+		4227C2B228A963CE0096428C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B128A963CE0096428C /* Helper.swift */; };
+		4227C2B428A9644C0096428C /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B328A9644C0096428C /* CustomButton.swift */; };
+		4227C2B628A9646A0096428C /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B528A9646A0096428C /* CustomImageView.swift */; };
+		4227C2B828A9647C0096428C /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B728A9647C0096428C /* CustomView.swift */; };
+		4227C2BA28A9649A0096428C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B928A9649A0096428C /* CustomTextField.swift */; };
+		4227C2BC28A964C70096428C /* DeleteAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2BB28A964C70096428C /* DeleteAlertController.swift */; };
+		4227C2BE28A9650D0096428C /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2BD28A9650D0096428C /* ToDoCell.swift */; };
+		4227C2C028A9651F0096428C /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2BF28A9651F0096428C /* ProfileViewCell.swift */; };
+		4227C2C228A965340096428C /* MainTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2C128A965340096428C /* MainTaskCell.swift */; };
+		4227C2C428A965520096428C /* DetailTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2C328A965520096428C /* DetailTaskCell.swift */; };
+		426FE2C228A966670032FA83 /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2B928A966670032FA83 /* Urbanist-Bold.ttf */; };
+		426FE2C328A966670032FA83 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BA28A966670032FA83 /* Urbanist-Regular.ttf */; };
+		426FE2C428A966670032FA83 /* Urbanist-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BB28A966670032FA83 /* Urbanist-Thin.ttf */; };
+		426FE2C528A966670032FA83 /* Urbanist-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BC28A966670032FA83 /* Urbanist-SemiBold.ttf */; };
+		426FE2C628A966670032FA83 /* Urbanist-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BD28A966670032FA83 /* Urbanist-Italic.ttf */; };
+		426FE2C728A966670032FA83 /* Urbanist-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BE28A966670032FA83 /* Urbanist-Light.ttf */; };
+		426FE2C828A966670032FA83 /* Urbanist-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BF28A966670032FA83 /* Urbanist-ExtraBold.ttf */; };
+		426FE2C928A966670032FA83 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2C028A966670032FA83 /* Urbanist-Medium.ttf */; };
+		426FE2CA28A966670032FA83 /* Urbanist-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2C128A966670032FA83 /* Urbanist-ExtraLight.ttf */; };
+		426FE2CC28A966DB0032FA83 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CB28A966DB0032FA83 /* RegisterController.swift */; };
+		426FE2CE28A967470032FA83 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CD28A967470032FA83 /* AlertController.swift */; };
+		426FE2D028A967890032FA83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CF28A967890032FA83 /* LoginController.swift */; };
+		426FE2D228A967990032FA83 /* ForgotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D128A967990032FA83 /* ForgotController.swift */; };
+		426FE2D428A968250032FA83 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D328A968250032FA83 /* ProfileController.swift */; };
+		426FE2D628A9683D0032FA83 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D528A9683D0032FA83 /* ChangePasswordController.swift */; };
+		426FE2D828A9685A0032FA83 /* ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D728A9685A0032FA83 /* ChangeNameViewController.swift */; };
+		426FE2DA28A9686E0032FA83 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D928A9686E0032FA83 /* ChangeEmailViewController.swift */; };
+		426FE2DC28A9688C0032FA83 /* ChangePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2DB28A9688C0032FA83 /* ChangePhotoViewController.swift */; };
+		426FE2E028A968AA0032FA83 /* DeleteAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2DF28A968AA0032FA83 /* DeleteAccountController.swift */; };
+		426FE2E228A968BF0032FA83 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E128A968BF0032FA83 /* ToDoViewController.swift */; };
+		426FE2E428A968D30032FA83 /* deletecontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E328A968D30032FA83 /* deletecontroller.swift */; };
+		426FE2E628A968F20032FA83 /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E528A968F20032FA83 /* TodoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4227C29328A962700096428C /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4227C29628A962700096428C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4227C29828A962700096428C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4227C29A28A962700096428C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4227C29D28A962700096428C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4227C29F28A962710096428C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4227C2A228A962710096428C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4227C2A428A962710096428C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4227C2AF28A9632B0096428C /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		4227C2B128A963CE0096428C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		4227C2B328A9644C0096428C /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		4227C2B528A9646A0096428C /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		4227C2B728A9647C0096428C /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		4227C2B928A9649A0096428C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		4227C2BB28A964C70096428C /* DeleteAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAlertController.swift; sourceTree = "<group>"; };
+		4227C2BD28A9650D0096428C /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		4227C2BF28A9651F0096428C /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
+		4227C2C128A965340096428C /* MainTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTaskCell.swift; sourceTree = "<group>"; };
+		4227C2C328A965520096428C /* DetailTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskCell.swift; sourceTree = "<group>"; };
+		426FE2B928A966670032FA83 /* Urbanist-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Bold.ttf"; sourceTree = "<group>"; };
+		426FE2BA28A966670032FA83 /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Regular.ttf"; sourceTree = "<group>"; };
+		426FE2BB28A966670032FA83 /* Urbanist-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Thin.ttf"; sourceTree = "<group>"; };
+		426FE2BC28A966670032FA83 /* Urbanist-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-SemiBold.ttf"; sourceTree = "<group>"; };
+		426FE2BD28A966670032FA83 /* Urbanist-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Italic.ttf"; sourceTree = "<group>"; };
+		426FE2BE28A966670032FA83 /* Urbanist-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Light.ttf"; sourceTree = "<group>"; };
+		426FE2BF28A966670032FA83 /* Urbanist-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraBold.ttf"; sourceTree = "<group>"; };
+		426FE2C028A966670032FA83 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
+		426FE2C128A966670032FA83 /* Urbanist-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraLight.ttf"; sourceTree = "<group>"; };
+		426FE2CB28A966DB0032FA83 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		426FE2CD28A967470032FA83 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		426FE2CF28A967890032FA83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		426FE2D128A967990032FA83 /* ForgotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotController.swift; sourceTree = "<group>"; };
+		426FE2D328A968250032FA83 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		426FE2D528A9683D0032FA83 /* ChangePasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
+		426FE2D728A9685A0032FA83 /* ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameViewController.swift; sourceTree = "<group>"; };
+		426FE2D928A9686E0032FA83 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		426FE2DB28A9688C0032FA83 /* ChangePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhotoViewController.swift; sourceTree = "<group>"; };
+		426FE2DF28A968AA0032FA83 /* DeleteAccountController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountController.swift; sourceTree = "<group>"; };
+		426FE2E128A968BF0032FA83 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		426FE2E328A968D30032FA83 /* deletecontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deletecontroller.swift; sourceTree = "<group>"; };
+		426FE2E528A968F20032FA83 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +118,94 @@
 		4227C29528A962700096428C /* PetProject */ = {
 			isa = PBXGroup;
 			children = (
-				4227C29628A962700096428C /* AppDelegate.swift */,
-				4227C29828A962700096428C /* SceneDelegate.swift */,
-				4227C29A28A962700096428C /* ViewController.swift */,
-				4227C29C28A962700096428C /* Main.storyboard */,
-				4227C29F28A962710096428C /* Assets.xcassets */,
-				4227C2A128A962710096428C /* LaunchScreen.storyboard */,
+				426FE2E728A969510032FA83 /* Delegate */,
+				4227C2AE28A963180096428C /* Resources */,
+				4227C2AD28A963130096428C /* Model */,
+				4227C2AC28A9630F0096428C /* View */,
+				4227C2AB28A963090096428C /* Controller */,
 				4227C2A428A962710096428C /* Info.plist */,
 			);
 			path = PetProject;
+			sourceTree = "<group>";
+		};
+		4227C2AB28A963090096428C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				426FE2CD28A967470032FA83 /* AlertController.swift */,
+				4227C2AF28A9632B0096428C /* WelcomeController.swift */,
+				426FE2CF28A967890032FA83 /* LoginController.swift */,
+				426FE2D128A967990032FA83 /* ForgotController.swift */,
+				426FE2CB28A966DB0032FA83 /* RegisterController.swift */,
+				426FE2D328A968250032FA83 /* ProfileController.swift */,
+				426FE2D528A9683D0032FA83 /* ChangePasswordController.swift */,
+				426FE2D728A9685A0032FA83 /* ChangeNameViewController.swift */,
+				426FE2D928A9686E0032FA83 /* ChangeEmailViewController.swift */,
+				426FE2DB28A9688C0032FA83 /* ChangePhotoViewController.swift */,
+				426FE2DF28A968AA0032FA83 /* DeleteAccountController.swift */,
+				426FE2E128A968BF0032FA83 /* ToDoViewController.swift */,
+				426FE2E328A968D30032FA83 /* deletecontroller.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4227C2AC28A9630F0096428C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4227C2B528A9646A0096428C /* CustomImageView.swift */,
+				4227C2B728A9647C0096428C /* CustomView.swift */,
+				4227C2B928A9649A0096428C /* CustomTextField.swift */,
+				4227C2B328A9644C0096428C /* CustomButton.swift */,
+				4227C2BB28A964C70096428C /* DeleteAlertController.swift */,
+				4227C2BD28A9650D0096428C /* ToDoCell.swift */,
+				4227C2BF28A9651F0096428C /* ProfileViewCell.swift */,
+				4227C2C128A965340096428C /* MainTaskCell.swift */,
+				4227C2C328A965520096428C /* DetailTaskCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4227C2AD28A963130096428C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				426FE2E528A968F20032FA83 /* TodoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4227C2AE28A963180096428C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4227C2A128A962710096428C /* LaunchScreen.storyboard */,
+				426FE2B828A966670032FA83 /* Urbanist */,
+				4227C2B128A963CE0096428C /* Helper.swift */,
+				4227C29F28A962710096428C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		426FE2B828A966670032FA83 /* Urbanist */ = {
+			isa = PBXGroup;
+			children = (
+				426FE2B928A966670032FA83 /* Urbanist-Bold.ttf */,
+				426FE2BA28A966670032FA83 /* Urbanist-Regular.ttf */,
+				426FE2BB28A966670032FA83 /* Urbanist-Thin.ttf */,
+				426FE2BC28A966670032FA83 /* Urbanist-SemiBold.ttf */,
+				426FE2BD28A966670032FA83 /* Urbanist-Italic.ttf */,
+				426FE2BE28A966670032FA83 /* Urbanist-Light.ttf */,
+				426FE2BF28A966670032FA83 /* Urbanist-ExtraBold.ttf */,
+				426FE2C028A966670032FA83 /* Urbanist-Medium.ttf */,
+				426FE2C128A966670032FA83 /* Urbanist-ExtraLight.ttf */,
+			);
+			path = Urbanist;
+			sourceTree = "<group>";
+		};
+		426FE2E728A969510032FA83 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				4227C29628A962700096428C /* AppDelegate.swift */,
+				4227C29828A962700096428C /* SceneDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +266,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				426FE2C228A966670032FA83 /* Urbanist-Bold.ttf in Resources */,
 				4227C2A328A962710096428C /* LaunchScreen.storyboard in Resources */,
 				4227C2A028A962710096428C /* Assets.xcassets in Resources */,
-				4227C29E28A962700096428C /* Main.storyboard in Resources */,
+				426FE2C928A966670032FA83 /* Urbanist-Medium.ttf in Resources */,
+				426FE2C728A966670032FA83 /* Urbanist-Light.ttf in Resources */,
+				426FE2C628A966670032FA83 /* Urbanist-Italic.ttf in Resources */,
+				426FE2C528A966670032FA83 /* Urbanist-SemiBold.ttf in Resources */,
+				426FE2C328A966670032FA83 /* Urbanist-Regular.ttf in Resources */,
+				426FE2CA28A966670032FA83 /* Urbanist-ExtraLight.ttf in Resources */,
+				426FE2C428A966670032FA83 /* Urbanist-Thin.ttf in Resources */,
+				426FE2C828A966670032FA83 /* Urbanist-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +287,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4227C29B28A962700096428C /* ViewController.swift in Sources */,
+				4227C2C028A9651F0096428C /* ProfileViewCell.swift in Sources */,
+				4227C2C428A965520096428C /* DetailTaskCell.swift in Sources */,
+				426FE2D428A968250032FA83 /* ProfileController.swift in Sources */,
+				4227C2C228A965340096428C /* MainTaskCell.swift in Sources */,
+				426FE2E028A968AA0032FA83 /* DeleteAccountController.swift in Sources */,
+				4227C2B828A9647C0096428C /* CustomView.swift in Sources */,
+				426FE2D828A9685A0032FA83 /* ChangeNameViewController.swift in Sources */,
+				426FE2CC28A966DB0032FA83 /* RegisterController.swift in Sources */,
+				426FE2E628A968F20032FA83 /* TodoModel.swift in Sources */,
 				4227C29728A962700096428C /* AppDelegate.swift in Sources */,
+				426FE2E428A968D30032FA83 /* deletecontroller.swift in Sources */,
+				4227C2B428A9644C0096428C /* CustomButton.swift in Sources */,
+				4227C2BE28A9650D0096428C /* ToDoCell.swift in Sources */,
+				426FE2DC28A9688C0032FA83 /* ChangePhotoViewController.swift in Sources */,
+				426FE2D628A9683D0032FA83 /* ChangePasswordController.swift in Sources */,
+				4227C2B628A9646A0096428C /* CustomImageView.swift in Sources */,
+				426FE2E228A968BF0032FA83 /* ToDoViewController.swift in Sources */,
+				4227C2BC28A964C70096428C /* DeleteAlertController.swift in Sources */,
+				426FE2D028A967890032FA83 /* LoginController.swift in Sources */,
+				426FE2DA28A9686E0032FA83 /* ChangeEmailViewController.swift in Sources */,
+				4227C2B228A963CE0096428C /* Helper.swift in Sources */,
+				426FE2CE28A967470032FA83 /* AlertController.swift in Sources */,
+				4227C2B028A9632B0096428C /* WelcomeController.swift in Sources */,
 				4227C29928A962700096428C /* SceneDelegate.swift in Sources */,
+				426FE2D228A967990032FA83 /* ForgotController.swift in Sources */,
+				4227C2BA28A9649A0096428C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4227C29C28A962700096428C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4227C29D28A962700096428C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4227C2A128A962710096428C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +456,6 @@
 				INFOPLIST_FILE = PetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -300,7 +463,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PetProject;
+				PRODUCT_BUNDLE_IDENTIFIER = idk.PetProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -320,7 +483,6 @@
 				INFOPLIST_FILE = PetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -328,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PetProject;
+				PRODUCT_BUNDLE_IDENTIFIER = idk.PetProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
