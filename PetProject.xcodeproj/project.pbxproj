@@ -23,6 +23,7 @@
 		4227C2C028A9651F0096428C /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2BF28A9651F0096428C /* ProfileViewCell.swift */; };
 		4227C2C228A965340096428C /* MainTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2C128A965340096428C /* MainTaskCell.swift */; };
 		4227C2C428A965520096428C /* DetailTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2C328A965520096428C /* DetailTaskCell.swift */; };
+		4241F44C28A96BB500242B13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4241F44B28A96BB500242B13 /* GoogleService-Info.plist */; };
 		426FE2C228A966670032FA83 /* Urbanist-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2B928A966670032FA83 /* Urbanist-Bold.ttf */; };
 		426FE2C328A966670032FA83 /* Urbanist-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BA28A966670032FA83 /* Urbanist-Regular.ttf */; };
 		426FE2C428A966670032FA83 /* Urbanist-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BB28A966670032FA83 /* Urbanist-Thin.ttf */; };
@@ -67,6 +68,7 @@
 		4227C2BF28A9651F0096428C /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		4227C2C128A965340096428C /* MainTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTaskCell.swift; sourceTree = "<group>"; };
 		4227C2C328A965520096428C /* DetailTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTaskCell.swift; sourceTree = "<group>"; };
+		4241F44B28A96BB500242B13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		426FE2B928A966670032FA83 /* Urbanist-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Bold.ttf"; sourceTree = "<group>"; };
 		426FE2BA28A966670032FA83 /* Urbanist-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Regular.ttf"; sourceTree = "<group>"; };
 		426FE2BB28A966670032FA83 /* Urbanist-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Thin.ttf"; sourceTree = "<group>"; };
@@ -110,7 +112,6 @@
 				B932CB04EDCC191FC1A23FAB /* Pods-PetProject.debug.xcconfig */,
 				3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -192,6 +193,7 @@
 		4227C2AE28A963180096428C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4241F44B28A96BB500242B13 /* GoogleService-Info.plist */,
 				4227C2A128A962710096428C /* LaunchScreen.storyboard */,
 				426FE2B828A966670032FA83 /* Urbanist */,
 				4227C2B128A963CE0096428C /* Helper.swift */,
@@ -298,6 +300,7 @@
 				4227C2A028A962710096428C /* Assets.xcassets in Resources */,
 				426FE2C928A966670032FA83 /* Urbanist-Medium.ttf in Resources */,
 				426FE2C728A966670032FA83 /* Urbanist-Light.ttf in Resources */,
+				4241F44C28A96BB500242B13 /* GoogleService-Info.plist in Resources */,
 				426FE2C628A966670032FA83 /* Urbanist-Italic.ttf in Resources */,
 				426FE2C528A966670032FA83 /* Urbanist-SemiBold.ttf in Resources */,
 				426FE2C328A966670032FA83 /* Urbanist-Regular.ttf in Resources */,

@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Urbanist-SemiBold.ttf</string>
-		<string>Urbanist-Regular.ttf</string>
-		<string>Urbanist-Medium.ttf</string>
-		<string>Urbanist-ExtraLight.ttf</string>
-		<string>Urbanist-Bold.ttf</string>
-	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -17,9 +9,17 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.425468611085-c1tq6aobr1r49tndkmjsbsvg7h057q0h</string>
+				<string>com.googleusercontent.apps.1064823312000-pnqvv9b3hec8c9ip39rhsln9ce5kmcur</string>
 			</array>
 		</dict>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Urbanist-SemiBold.ttf</string>
+		<string>Urbanist-Regular.ttf</string>
+		<string>Urbanist-Medium.ttf</string>
+		<string>Urbanist-ExtraLight.ttf</string>
+		<string>Urbanist-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

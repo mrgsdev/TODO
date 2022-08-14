@@ -17,9 +17,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let navController = UINavigationController()
         
+        // UserDefaults WORK
         
-        let viewController = WelcomeController()
-        navController.viewControllers = [viewController]
+        if UserDefaults.standard.bool(forKey: "true")  {
+            let viewController = ToDoViewController()
+            navController.viewControllers = [viewController]
+        }else{
+
+            let viewController = WelcomeController()
+            navController.viewControllers = [viewController]
+        }
+//cus
+        
+        
+//        let viewController = we()
+//        navController.viewControllers = [viewController]
         self.window = window
         window.rootViewController = navController
         window.makeKeyAndVisible()
