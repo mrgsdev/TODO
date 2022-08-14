@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2ECF6810B5B9B4B3BD58D6C3 /* Pods_PetProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */; };
 		4227C29728A962700096428C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29628A962700096428C /* AppDelegate.swift */; };
 		4227C29928A962700096428C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29828A962700096428C /* SceneDelegate.swift */; };
 		4227C2A028A962710096428C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4227C29F28A962710096428C /* Assets.xcassets */; };
@@ -47,6 +48,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.release.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.release.xcconfig"; sourceTree = "<group>"; };
+		3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4227C29328A962700096428C /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4227C29628A962700096428C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4227C29828A962700096428C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		426FE2E128A968BF0032FA83 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 		426FE2E328A968D30032FA83 /* deletecontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deletecontroller.swift; sourceTree = "<group>"; };
 		426FE2E528A968F20032FA83 /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
+		B932CB04EDCC191FC1A23FAB /* Pods-PetProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.debug.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,17 +97,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ECF6810B5B9B4B3BD58D6C3 /* Pods_PetProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1302556F05996E612F285411 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B932CB04EDCC191FC1A23FAB /* Pods-PetProject.debug.xcconfig */,
+				3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4227C28A28A962700096428C = {
 			isa = PBXGroup;
 			children = (
 				4227C29528A962700096428C /* PetProject */,
 				4227C29428A962700096428C /* Products */,
+				1302556F05996E612F285411 /* Pods */,
+				D28E297F0ECF0AFD1A99A3E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +225,14 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
+		D28E297F0ECF0AFD1A99A3E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,9 +240,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4227C2A728A962710096428C /* Build configuration list for PBXNativeTarget "PetProject" */;
 			buildPhases = (
+				8D51B0A554067E2BB1F00802 /* [CP] Check Pods Manifest.lock */,
 				4227C28F28A962700096428C /* Sources */,
 				4227C29028A962700096428C /* Frameworks */,
 				4227C29128A962700096428C /* Resources */,
+				FF27CED7B541C54567D64519 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,6 +308,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8D51B0A554067E2BB1F00802 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PetProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF27CED7B541C54567D64519 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PetProject/Pods-PetProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PetProject/Pods-PetProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PetProject/Pods-PetProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4227C28F28A962700096428C /* Sources */ = {
@@ -446,6 +515,7 @@
 		};
 		4227C2A828A962710096428C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B932CB04EDCC191FC1A23FAB /* Pods-PetProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -473,6 +543,7 @@
 		};
 		4227C2A928A962710096428C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
