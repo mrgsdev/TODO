@@ -81,6 +81,7 @@ extension DeleteAccountController{
         deleteAccount()
     }
     private func deleteAccount()  {
+        Vibration.soft.vibrate()
         guard let txtfld = deleteTextField.text,txtfld == "Delete an account" else {
             Vibration.error.vibrate()
             let animation = CABasicAnimation(keyPath: "position")
@@ -110,6 +111,16 @@ extension DeleteAccountController{
                 self.signOut()
                 self.navigationController?.viewControllers = [DeleteAlertController()]
                 
+            }
+        }
+        if user == nil{
+            let alertController = AlertController()
+            alertController.customAlert(text: "Error", destText: "you are not logged in to your account", isHiddenActionButton: true)
+            alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            self.present(alertController, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.navigationController?.viewControllers = [WelcomeController()]
             }
         }
         

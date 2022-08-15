@@ -75,7 +75,7 @@ class ChangePhotoViewController: UIViewController {
             return
         }
         
-        tappedImage.image = UIImage(named: "backImage")
+        tappedImage.image = UIImage(named: imageSet.background.rawValue)
         tappedImage.contentMode = .scaleAspectFit
     }
     

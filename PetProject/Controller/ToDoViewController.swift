@@ -121,7 +121,8 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false) 
+        tableView.deselectRow(at: indexPath, animated: false)
+        Vibration.soft.vibrate()
         let newTaskVC = NewTaskViewController()
         newTaskVC.textFieldTask.text = arrayTodo[indexPath.row].taskPrimary
         newTaskVC.detailTextView.text = arrayTodo[indexPath.row].taskSecondary

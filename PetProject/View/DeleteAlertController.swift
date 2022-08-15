@@ -9,7 +9,7 @@ import UIKit
 
 class DeleteAlertController: UIViewController {
     let imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "deleteFace"))
+        let imageView = UIImageView(image: UIImage(named: imageSet.sadface.rawValue))
         imageView.contentMode = .center
         
         imageView.translatesAutoresizingMaskIntoConstraints = false

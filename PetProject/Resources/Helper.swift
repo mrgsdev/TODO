@@ -66,12 +66,13 @@ extension UIColor{
 //MARK: - Image enum
 enum imageSet:String{
     case googleIcon = "googleIcon"
-    case backImage = "backImage"
+    case background = "background"
     case userLogo = "userLogo"
     case plus = "plus"
     case personFill = "person.fill"
     case backButton = "chevron.backward"
     case checkmark = "checkmark"
+    case sadface = "sadface"
 }
 
 //MARK: - UIFont extension

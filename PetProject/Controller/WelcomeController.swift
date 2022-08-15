@@ -11,7 +11,7 @@ class WelcomeController: UIViewController {
     //.
     //MARK: Create UI with Code
     private let backgroundImage: UIImageView = {
-        let backgroundImage = UIImageView(image: UIImage(named: imageSet.backImage.rawValue))
+        let backgroundImage = UIImageView(image: UIImage(named: imageSet.background.rawValue))
         backgroundImage.contentMode = .scaleAspectFill
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         return backgroundImage
