@@ -40,21 +40,25 @@ class RegisterController: UIViewController {
     }()
     private let userTextField: CustomTextField = {
         let textfield = CustomTextField()
+        textfield.tag = 0
         textfield.customPlaceholder(placeholder: "Enter username")
         return textfield
     }()
     private let emailTextField: CustomTextField = {
         let textfield = CustomTextField()
+        textfield.tag = 1
         textfield.customPlaceholder(placeholder: "Enter email")
         return textfield
     }()
     private let passwordTextField: CustomTextField = {
         let textfield = CustomTextField()
+        textfield.tag = 2
         textfield.customPlaceholder(placeholder: "Enter password")
         return textfield
     }()
     private let confirmPasswordTextField: CustomTextField = {
         let textfield = CustomTextField()
+        textfield.tag = 3
         //        textfield.layer.borderColor = UIColor.yellow.cgColor
         textfield.customPlaceholder(placeholder: "Enter confirm username")
         return textfield
@@ -134,6 +138,10 @@ class RegisterController: UIViewController {
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        userTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
         view.backgroundColor = UIColor.Support.background
         scrollView.delegate = self
         clearBackgroundNavigationBar()
@@ -390,3 +398,16 @@ extension RegisterController:UIScrollViewDelegate{
         }
     }
 }
+extension RegisterController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+              if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+                 nextField.becomeFirstResponder()
+              } else {
+                 // Not found, so remove keyboard.
+                 textField.resignFirstResponder()
+              }
+              // Do not add a line break
+              return false
+    }
+} 

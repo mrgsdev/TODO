@@ -28,12 +28,15 @@ class LoginController: UIViewController {
     
     private let emailTextField: CustomTextField = {
         let textField = CustomTextField()
+        textField.tag = 0
         textField.customPlaceholder(placeholder: "Enter your email")
         return textField
     }()
     
     private let passwordTextField: CustomTextField = {
         let textField = CustomTextField()
+        
+        textField.tag = 1//Increment accordingly
         textField.customPlaceholder(placeholder: "Enter your password")
         textField.isSecureTextEntry = true
         return textField
@@ -124,6 +127,9 @@ class LoginController: UIViewController {
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        hideKeyboardWhenTappedAround()
         view.backgroundColor = UIColor.Support.background
         clearBackgroundNavigationBar()
         navItemSetupButton()
@@ -329,3 +335,16 @@ extension LoginController{
         ])
     }
 }
+extension LoginController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+              if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+                 nextField.becomeFirstResponder()
+              } else {
+                 // Not found, so remove keyboard.
+                 textField.resignFirstResponder()
+              }
+              // Do not add a line break
+              return false
+    }
+} 
