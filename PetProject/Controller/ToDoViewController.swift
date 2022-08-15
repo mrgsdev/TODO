@@ -14,12 +14,13 @@ protocol ToDoViewControllerDelegate:AnyObject {
 class ToDoViewController: UIViewController{
     private var arrayTodo = [TodoModel]()
     private let heightCell:CGFloat = 80
+    var handle: AuthStateDidChangeListenerHandle?
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(ToDoCell.self, forCellReuseIdentifier: "todoCell")
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
-            
+        
         table.backgroundColor = UIColor.Support.background
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -40,19 +41,44 @@ class ToDoViewController: UIViewController{
         navItemSetupButton()
         makeConstraints()
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        let user = Auth.auth().currentUser
-//        let uid = user?.uid
-//          let email = user?.email
-//          var multiFactorString = "MultiFactor: "
-//          for info in user!.multiFactor.enrolledFactors {
-//            multiFactorString += info.displayName ?? "[DispayName]"
-//            multiFactorString += " "
-//          }
-//        print(email)
-//        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     
+        emptyUser()
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            // [START_EXCLUDE]
+            self.setTitleDisplay(user)
+            self.tableView.reloadData()
+            // [END_EXCLUDE]
+        }
+        
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    func setTitleDisplay(_ user: User?) {
+        
+        if let name = user?.displayName {
+            navigationItem.title = "Welcome \(name)"
+        } else {
+            navigationItem.title = ""
+        }
+    }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        let user = Auth.auth().currentUser
+    //        let uid = user?.uid
+    //          let email = user?.email
+    //          var multiFactorString = "MultiFactor: "
+    //          for info in user!.multiFactor.enrolledFactors {
+    //            multiFactorString += info.displayName ?? "[DispayName]"
+    //            multiFactorString += " "
+    //          }
+    //        print(email)
+    //        }
+}
 
 
 extension ToDoViewController:ToDoViewControllerDelegate{
@@ -98,13 +124,13 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoCell
-//        cell.labelText.text = arrayTodo[indexPath.row].mainTask
+        //        cell.labelText.text = arrayTodo[indexPath.row].mainTask
         cell.labelText.text = arrayTodo[indexPath.row].taskPrimary
         return cell
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        if velocity.y > 0,
-//           arrayTodo.count != 0
+        //        if velocity.y > 0,
+        //           arrayTodo.count != 0
         if velocity.y > 0{
             self.navigationController?.setNavigationBarHidden(true, animated: true)
             print("Hide")

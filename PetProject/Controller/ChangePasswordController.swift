@@ -34,11 +34,13 @@ class ChangePasswordController: UIViewController {
     
     private let newPasswordTextField: CustomTextField = {
         let textfield = CustomTextField()
+        textfield.tag = 0
         textfield.customPlaceholder(placeholder: "New Password")
         return textfield
     }()
     private let confirmPasswordTextField: CustomTextField = {
         let textfield = CustomTextField()
+        textfield.tag = 1
         textfield.customPlaceholder(placeholder: "Confirm Password")
         return textfield
     }()
@@ -67,13 +69,35 @@ class ChangePasswordController: UIViewController {
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        newPasswordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
         view.backgroundColor = UIColor.Support.background
         clearBackgroundNavigationBar()
+        hideKeyboardWhenTappedAround()
         navItemSetupButton()
         addSubviewElement()
         makeConstraints()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        reAuth()
+    }
+    func reAuth(){
+        let user = Auth.auth().currentUser
+        var credential: AuthCredential = EmailAuthProvider.credential(withEmail: "***@gmail.com", password: "123123")
+
+        user?.reauthenticate(with: credential) { result, error in
+             if let error = error {
+                 let alertController = AlertController()
+                 alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
+                 alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                 self.present(alertController, animated: true)
+             } else {
+                 print("2")
+             }
+        }
+    }
 }
 extension ChangePasswordController{
     @objc private func popViewButtonPressed(){
@@ -172,5 +196,18 @@ extension ChangePasswordController{
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
         ])
+    }
+}
+extension ChangePasswordController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+              if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+                 nextField.becomeFirstResponder()
+              } else {
+                 // Not found, so remove keyboard.
+                 textField.resignFirstResponder()
+              }
+              // Do not add a line break
+              return false
     }
 }

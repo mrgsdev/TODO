@@ -65,6 +65,8 @@ class ChangeNameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.Support.background
+        nameTextField.delegate = self
+        hideKeyboardWhenTappedAround()
         clearBackgroundNavigationBar()
         navItemSetupButton()
         addSubviewElement()
@@ -148,5 +150,10 @@ extension ChangeNameViewController{
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
         ])
+    }
+}
+extension ChangeNameViewController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }

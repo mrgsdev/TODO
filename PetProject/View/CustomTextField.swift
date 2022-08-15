@@ -36,8 +36,7 @@ class CustomTextField: UITextField {
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.Support.border?.cgColor
         self.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        self.clipsToBounds = true
-        self.tintColor = UIColor(rgb: 0x8391A1)
+        self.clipsToBounds = true 
         self.font = UIFont(name: UIFont.urbanistMedium , size: 17)
     }
     

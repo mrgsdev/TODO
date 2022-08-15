@@ -60,7 +60,9 @@ class ChangeEmailViewController: UIViewController {
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
         view.backgroundColor = UIColor.Support.background
+        hideKeyboardWhenTappedAround()
         clearBackgroundNavigationBar()
         navItemSetupButton()
         addSubviewElement()
@@ -144,3 +146,8 @@ extension ChangeEmailViewController{
     }
 }
 
+extension ChangeEmailViewController:UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+}

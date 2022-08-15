@@ -26,7 +26,7 @@ class ForgotController: UIViewController {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "Don't worry! It occurs. Please enter the email address linked with your account."
-        label.textColor = UIColor(rgb: 0x8391A1)
+        label.textColor = UIColor.TextField.label
         label.font = UIFont(name: UIFont.urbanistExtraLight, size: 16)
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0

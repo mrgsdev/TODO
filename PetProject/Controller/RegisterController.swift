@@ -145,6 +145,7 @@ class RegisterController: UIViewController {
         view.backgroundColor = UIColor.Support.background
         scrollView.delegate = self
         clearBackgroundNavigationBar()
+        hideKeyboardWhenTappedAround()
         navItemSetupButton()
         addSubviewElement()
         makeConstraints()

@@ -76,7 +76,7 @@ class ProfileController: UIViewController {
     
     private lazy var logoutButton: UIButton = {
         let logoutButton = UIButton()
-        logoutButton.backgroundColor = UIColor(rgb: 0x1E232C) // custom color
+        logoutButton.backgroundColor = UIColor.Button.background
         
         if let font = UIFont(name: "Urbanist-SemiBold", size: 17) {
             logoutButton.titleLabel?.font = font
@@ -263,7 +263,7 @@ extension ProfileController:UITableViewDataSource,UITableViewDelegate{
         cell.labelText.text = "\(arrayCount[indexPath.row])"
         if(indexPath.row >= arrayCount.count-1){
 //            cell.containerView.backgroundColor = UIColor(rgb: 0xB4D9FF)
-            cell.labelText.textColor = UIColor(rgb: 0xFF6666)
+            cell.labelText.textColor = UIColor.TextField.label
         }
         return cell
     }

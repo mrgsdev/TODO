@@ -61,6 +61,7 @@ class ChangePhotoViewController: UIViewController {
         navItemSetupButton()
         addSubviewElement()
         makeConstraints()
+        hideKeyboardWhenTappedAround()
         
         // imageView @IBACtion
         
