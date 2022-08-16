@@ -13,21 +13,8 @@ import GoogleSignIn
 class RegisterController: UIViewController {
     private var databaseRef = Database.database().reference()
     // MARK: - Create UI with Code
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.frame = self.view.bounds
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.contentSize = contentSize
-        return scrollView
-    }()
-    private lazy var contentView: UIView = {
-        let contentView = UIView()
-        contentView.frame.size = contentSize
-        return contentView
-    }()
-    private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height) // + 20
-    }
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     private let registerLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello! Register to get started"
@@ -150,24 +137,8 @@ class RegisterController: UIViewController {
         navItemSetupButton()
         addSubviewElement()
         makeConstraints()
+        
     }
-//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//        super.traitCollectionDidChange(previousTraitCollection)
-//
-//        let userInterfaceStyle = traitCollection.userInterfaceStyle
-//        switch userInterfaceStyle {
-//                case .light:
-//                    googleAuth.layer.borderColor = UIColor.colorSetborderColor?.cgColor
-//                case .dark:
-//                    googleAuth.layer.borderColor = UIColor.colorSetborderColor?.cgColor
-//                case .unspecified:
-//                    print("123")
-//        @unknown default:
-//            fatalError()
-//        }
-//
-//        // Update your user interface based on the appearance
-//    }}
 }
 
 extension RegisterController{
@@ -182,11 +153,6 @@ extension RegisterController{
         GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
             
             if let error = error {
-                
-//                let alertController = UIAlertController(title: "Registration Error", message: error.localizedDescription, preferredStyle: .alert)
-//                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                alertController.addAction(okayAction)
-//                self.present(alertController, animated: true, completion: nil)
                 
                 let alertController = AlertController()
                 alertController.customAlert(text: "Registration Error", destText: error.localizedDescription, isHiddenActionButton: true)
@@ -207,10 +173,6 @@ extension RegisterController{
             
             Auth.auth().signIn(with: credential) { (authResult, error) in
                 if let error = error {
-//                    let alertController = UIAlertController(title: "Registration Error", message: error.localizedDescription, preferredStyle: .alert)
-//                    let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                    alertController.addAction(okayAction)
-//                    self.present(alertController, animated: true, completion: nil)
                     
                     let alertController = AlertController()
                     alertController.customAlert(text: "Registration Error", destText: error.localizedDescription, isHiddenActionButton: true)
@@ -240,10 +202,6 @@ extension RegisterController{
           let password = passwordTextField.text, password != "",
           let confirmPassword = confirmPasswordTextField.text,confirmPassword != ""  else {
         Vibration.error.vibrate()
-//            let alertController = UIAlertController(title: "Registration Error", message: "Please make sure you provide your name, email address and password to complete the registration.", preferredStyle: .alert)
-//            let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//            alertController.addAction(okayAction)
-//            present(alertController, animated: true, completion: nil)
         
         let alertController = AlertController()
         alertController.customAlert(text: "Registration Error", destText: "Please make sure you provide your name, email address and password to complete the registration.", isHiddenActionButton: true)
@@ -254,10 +212,6 @@ extension RegisterController{
     }
     guard let password = passwordTextField.text,let confirmPassword = confirmPasswordTextField.text,password == confirmPassword else {
         Vibration.error.vibrate()
-//            let alertController = UIAlertController(title: "Passwords do not match", message: "Make sure the input is correct", preferredStyle: .alert)
-//            let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//            alertController.addAction(okayAction)
-//            present(alertController, animated: true, completion: nil)
         
         let alertController = AlertController()
         alertController.customAlert(text: "Passwords do not match", destText: "Make sure the input is correct", isHiddenActionButton: true)
@@ -274,10 +228,6 @@ extension RegisterController{
         
         if let error = error {
             Vibration.error.vibrate()
-//                let alertController = UIAlertController(title: "Registration Error", message: error.localizedDescription, preferredStyle: .alert)
-//                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//                alertController.addAction(okayAction)
-//                self.present(alertController, animated: true, completion: nil)
             
             let alertController = AlertController()
             alertController.customAlert(text: "Passwords do not match", destText: error.localizedDescription, isHiddenActionButton: true)
@@ -304,15 +254,7 @@ extension RegisterController{
         self?.view.endEditing(true)
         
         // Send verification email
-        Auth.auth().currentUser?.sendEmailVerification()
-        
-//            let alertController = UIAlertController(title: "Email Verification", message: "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up.", preferredStyle: .alert)
-//            let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
-//                // Dismiss the current view controller
-//                self.dismiss(animated: true, completion: nil)
-//            })
-//            alertController.addAction(okayAction)
-//            self.present(alertController, animated: true, completion: nil)
+        Auth.auth().currentUser?.sendEmailVerification() 
         
         Vibration.success.vibrate()
         let alertController = AlertController()
@@ -332,6 +274,9 @@ extension RegisterController{
         navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self, action: #selector(popViewButtonPressed))
     }
     private func addSubviewElement()  {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+//        scrollView.backgroundColor = .yellow
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(lineView)
@@ -354,6 +299,15 @@ extension RegisterController{
     }
     private func makeConstraints()  {
         NSLayoutConstraint.activate([
+            scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
             userTextField.heightAnchor.constraint(equalToConstant: 56),
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
@@ -373,17 +327,15 @@ extension RegisterController{
             lineView.leftAnchor.constraint(equalTo: contentView.leftAnchor,constant: 20),
             lineView.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: -20),
             lineView.heightAnchor.constraint(equalToConstant: 1),
+
             //
-            //
-            //
-            
-            //
-            
+
             stackViewGoogleApple.topAnchor.constraint(equalTo: orRegisterWith.bottomAnchor,constant: 10),
             stackViewGoogleApple.leftAnchor.constraint(equalTo: contentView.leftAnchor,constant: 20),
             stackViewGoogleApple.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: -20),
             stackViewGoogleApple.heightAnchor.constraint(equalToConstant: 56),
-            
+            stackViewGoogleApple.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+
         ])
     }
 }
@@ -391,11 +343,11 @@ extension RegisterController{
 extension RegisterController:UIScrollViewDelegate{
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0) {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
+//            self.navigationController?.setNavigationBarHidden(true, animated: true)
             print("Hide")
             
         } else {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
+//            self.navigationController?.setNavigationBarHidden(false, animated: true)
             print("Unhide")
         }
     }

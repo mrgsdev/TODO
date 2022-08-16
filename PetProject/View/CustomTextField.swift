@@ -38,7 +38,7 @@ class CustomTextField: UITextField {
         self.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         self.clipsToBounds = true
         self.autocorrectionType = .no
-        self.autocapitalizationType = .none
+//        self.autocapitalizationType = .none
         self.font = UIFont(name: UIFont.urbanistMedium , size: 17)
     }
     

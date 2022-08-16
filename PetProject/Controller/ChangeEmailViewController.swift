@@ -32,14 +32,16 @@ class ChangeEmailViewController: UIViewController {
         return label
     }()
     private let emailTextField: CustomTextField = {
-        let email = CustomTextField()
-        email.customPlaceholder(placeholder: "Enter new email")
-        return email
+        let textfield = CustomTextField()
+        textfield.tag = 0
+        textfield.customPlaceholder(placeholder: "Enter new email")
+        return textfield
     }()
     private let passwordTextField: CustomTextField = {
-        let email = CustomTextField()
-        email.customPlaceholder(placeholder: "Enter your password")
-        return email
+        let textfield = CustomTextField()
+        textfield.tag = 1
+        textfield.customPlaceholder(placeholder: "Enter your password")
+        return textfield
     }()
     
      
@@ -65,6 +67,7 @@ class ChangeEmailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
+        passwordTextField.delegate = self
         view.backgroundColor = UIColor.Support.background
         hideKeyboardWhenTappedAround()
         clearBackgroundNavigationBar()
@@ -163,6 +166,14 @@ extension ChangeEmailViewController{
 
 extension ChangeEmailViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        // Try to find next responder
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
     }
 }
