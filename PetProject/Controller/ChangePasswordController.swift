@@ -85,57 +85,7 @@ class ChangePasswordController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        reAuth()
-    }
-    func reAuth(){
-        var pass = "9"
-        //
-        
-        //1. Create the alert controller.
-        let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
-        
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextField { (textField) in
-            textField.text = "Some default text"
-        }
-        
-        // 3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            print("Text field: \(textField!.text)")
-            pass = textField!.text!
-            let user = Auth.auth().currentUser
-            var credential: AuthCredential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: pass)
-            user?.reauthenticate(with: credential) { result,error  in
-                if let error = error {
-                    print("DEL=\(pass)=")
-                    print("DEL=\(user?.email)=")
-                } else {
-                    print("Suc\(pass)")
-                }
-            }
-        }))
-        
-        // 4. Present the alert.
-        self.present(alert, animated: true, completion: nil)
-        
-        
-    }
-    //        let user = Auth.auth().currentUser
-    //        var credential: AuthCredential = EmailAuthProvider.credential(withEmail: "***@gmail.com", password: "123123")
-    //
-    //        user?.reauthenticate(with: credential) { result, error in
-    //             if let error = error {
-    //                 let alertController = AlertController()
-    //                 alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
-    //                 alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-    //                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-    //                 self.present(alertController, animated: true)
-    //             } else {
-    //                 print("2")
-    //             }
-    //        }
-    //    }
+    } 
 }
 extension ChangePasswordController{
     @objc private func popViewButtonPressed(){
@@ -168,7 +118,7 @@ extension ChangePasswordController{
             
         }
         let user = Auth.auth().currentUser
-        var credential: AuthCredential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: oldPassword)
+        let credential: AuthCredential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: oldPassword) 
         user?.reauthenticate(with: credential) { result,error  in
             if let error = error {
                 Vibration.error.vibrate()
@@ -178,10 +128,10 @@ extension ChangePasswordController{
                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 self.present(alertController, animated: true)
                 print("DEL=\(oldPassword)=") 
-                print("DEL=\(user?.email)=")
+                print("DEL=\(String(describing: user?.email))=")
             } else {
                 print("Suc\(oldPassword)")
-                print("DEL=\(user?.email)=")
+                print("Suc=\(String(describing: user?.email))=")
                 
                 
                 

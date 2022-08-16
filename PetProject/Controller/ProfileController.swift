@@ -124,8 +124,7 @@ class ProfileController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let user = Auth.auth().currentUser
-        if let user = user {
-//            let uid = user.uid
+        if let user = user { 
             let username = user.displayName
             let email = user.email
             

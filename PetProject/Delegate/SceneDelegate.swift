@@ -29,8 +29,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //cus
         
         
-        let viewController = WelcomeController()
-        navController.viewControllers = [viewController]
+//        let viewController = WelcomeController()
+//        navController.viewControllers = [viewController]
         self.window = window
         window.rootViewController = navController
         window.makeKeyAndVisible()

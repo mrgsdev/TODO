@@ -41,6 +41,7 @@ class RegisterController: UIViewController {
     private let userTextField: CustomTextField = {
         let textfield = CustomTextField()
         textfield.tag = 0
+        textfield.autocapitalizationType = .allCharacters
         textfield.customPlaceholder(placeholder: "Enter username")
         return textfield
     }()

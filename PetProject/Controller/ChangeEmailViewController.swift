@@ -31,10 +31,14 @@ class ChangeEmailViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
     private let emailTextField: CustomTextField = {
         let email = CustomTextField()
-        email.customPlaceholder(placeholder: "Enter your email")
+        email.customPlaceholder(placeholder: "Enter new email")
+        return email
+    }()
+    private let passwordTextField: CustomTextField = {
+        let email = CustomTextField()
+        email.customPlaceholder(placeholder: "Enter your password")
         return email
     }()
     
@@ -81,7 +85,7 @@ extension ChangeEmailViewController{
         print(#function)
         // Validate the input
         Vibration.light.vibrate()
-        guard let email = emailTextField.text, email != "" else {
+        guard let password = passwordTextField.text,let email = emailTextField.text, email != "",password != "" else {
             Vibration.error.vibrate()
             let alertController = AlertController()
             alertController.customAlert(text: "Error", destText: "Both fields must not be blank.", isHiddenActionButton: true)
@@ -91,37 +95,46 @@ extension ChangeEmailViewController{
 
             return
         }
-
-        Auth.auth().currentUser?.updateEmail(to: email) { error in
-            guard let error = error else {
-                Vibration.success.vibrate()
+        
+        let user = Auth.auth().currentUser
+        let credential: AuthCredential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: password)
+        user?.reauthenticate(with: credential) { result,error  in
+            if let error = error {
+                Vibration.error.vibrate()
                 let alertController = AlertController()
-                alertController.customAlert(text: "Email Change🥳", destText: "All that's left is to confirm the mail", isHiddenActionButton: true)
-                Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
                 alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 self.present(alertController, animated: true)
-                
-                  DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                      self.navigationController?.popViewController(animated: true)
-                  }
-                return
+                print("PASSWORD=\(password)=")
+                print("EMAIL OLD=\(String(describing: user?.email))=")
+            }else{
+                Auth.auth().currentUser?.updateEmail(to: email) { error in
+                    guard let error = error else {
+                        Vibration.success.vibrate()
+                        let alertController = AlertController()
+                        alertController.customAlert(text: "Email Change🥳", destText: "All that's left is to confirm the mail", isHiddenActionButton: true)
+                        Auth.auth().currentUser?.sendEmailVerification(completion: nil)
+                        alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                        alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                        self.present(alertController, animated: true)
+                        
+                          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                              self.navigationController?.popViewController(animated: true)
+                          }
+                        return
+                    }
+                    Vibration.error.vibrate()
+                    let alertController = AlertController()
+                    alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
+                    alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                    alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                    self.present(alertController, animated: true)
             }
-//            if let error = error{ // no work
-//                let alertController = AlertController()
-//                alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
-//                alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//                alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-//                self.present(alertController, animated: true)
-//            }
-            Vibration.error.vibrate()
-            let alertController = AlertController()
-            alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
-            alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-            self.present(alertController, animated: true)
+       
 
         }
+    }
     }
     private func navItemSetupButton()  {
         navigationItem.setHidesBackButton(true, animated: true)
@@ -132,10 +145,12 @@ extension ChangeEmailViewController{
         stackView.addArrangedSubview(labelPrimary)
         stackView.addArrangedSubview(labelSecondary)
         stackView.addArrangedSubview(emailTextField)
+        stackView.addArrangedSubview(passwordTextField)
         stackView.addArrangedSubview(resetEmailButton)
     }
     private func makeConstraints()  {
         NSLayoutConstraint.activate([
+            passwordTextField.heightAnchor.constraint(equalToConstant: 56),
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
             resetEmailButton.heightAnchor.constraint(equalToConstant: 56),
         

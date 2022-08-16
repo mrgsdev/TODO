@@ -28,7 +28,7 @@ class CustomTextField: UITextField {
         
     }
     override func layoutSubviews() {
-        super.layoutSubviews()
+        super.layoutSubviews() 
         self.borderStyle = .none
         self.textColor = UIColor.TextField.label
         self.layer.cornerRadius = 15.0
@@ -36,8 +36,15 @@ class CustomTextField: UITextField {
         self.layer.borderWidth = 1.0
         self.layer.borderColor = UIColor.Support.border?.cgColor
         self.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
-        self.clipsToBounds = true 
+        self.clipsToBounds = true
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .none
         self.font = UIFont(name: UIFont.urbanistMedium , size: 17)
+    }
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+        
     }
     
     func customPlaceholder(placeholder:String)  {

@@ -24,8 +24,8 @@ class DeleteAccountController: UIViewController {
     private let labelSecondary: UILabel = {
         let label = UILabel()
         label.attributedText = NSMutableAttributedString()
-        .normal(String(localized:"You will irretrievably lose all your data, including notes.To delete an account, enter:\n"))
-        .boldUnderlined(String(localized:"Delete an account"))
+            .normal(String(localized:"You will irretrievably lose all your data, including notes.To delete an account, enter:\n"))
+            .boldUnderlined(String(localized:"Delete an account"))
         label.textColor = UIColor.Label.labelSecondary
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
@@ -80,18 +80,21 @@ extension DeleteAccountController{
     @objc private func deleteAccountPressed(){
         deleteAccount()
     }
+    private func anim(){
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 2
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.deleteTextField.center.x - 10, y: self.deleteTextField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: self.deleteTextField.center.x + 10, y: self.deleteTextField.center.y))
+        self.deleteTextField.text = ""
+        self.deleteTextField.layer.add(animation, forKey: "position")
+    }
     private func deleteAccount()  {
         Vibration.soft.vibrate()
-        guard let txtfld = deleteTextField.text,txtfld == "Delete an account" else {
+        guard let txtfld = deleteTextField.text,txtfld != "" else {
             Vibration.error.vibrate()
-            let animation = CABasicAnimation(keyPath: "position")
-            animation.duration = 0.07
-            animation.repeatCount = 2
-            animation.autoreverses = true
-            animation.fromValue = NSValue(cgPoint: CGPoint(x: deleteTextField.center.x - 10, y: deleteTextField.center.y))
-            animation.toValue = NSValue(cgPoint: CGPoint(x: deleteTextField.center.x + 10, y: deleteTextField.center.y))
-            deleteTextField.text = "Delete an account👈"
-            deleteTextField.layer.add(animation, forKey: "position")
+            anim()
             let loadvc = AlertController()
             loadvc.customAlert(text: "Input Error", destText: "Check that the input is correct✍🏻", isHiddenActionButton: true)
             loadvc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -100,19 +103,36 @@ extension DeleteAccountController{
             return
         }
         let user = Auth.auth().currentUser
-        user?.delete { error in
+        let credential: AuthCredential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: txtfld)
+       
+        user?.reauthenticate(with: credential) { result,error  in
             if let error = error {
+                Vibration.error.vibrate()
                 let alertController = AlertController()
-                alertController.customAlert(text: "Delete Error", destText: error.localizedDescription, isHiddenActionButton: true)
+                self.anim()
+                alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
                 alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 self.present(alertController, animated: true)
+                print("DEL=\(txtfld)=")
+                print("DEL=\(String(describing: user?.email))=")
             } else {
-                self.signOut()
-                self.navigationController?.viewControllers = [DeleteAlertController()]
-                
+                user?.delete { error in
+                    if let error = error {
+                        let alertController = AlertController()
+                        alertController.customAlert(text: "Delete Error", destText: error.localizedDescription, isHiddenActionButton: true)
+                        alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                        alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                        self.present(alertController, animated: true)
+                    } else {
+                        self.signOut()
+                        self.navigationController?.viewControllers = [DeleteAlertController()]
+                        
+                    }
+                }
             }
         }
+        
         if user == nil{
             let alertController = AlertController()
             alertController.customAlert(text: "Error", destText: "you are not logged in to your account", isHiddenActionButton: true)
