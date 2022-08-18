@@ -12,6 +12,8 @@ protocol ToDoViewControllerDelegate:AnyObject {
     func update(taskPrimary:String,taskSecondary:String?)
 }
 class ToDoViewController: UIViewController{
+   
+    
     private var arrayTodo = [TodoModel]()
     private let heightCell:CGFloat = 80
     var handle: AuthStateDidChangeListenerHandle?
@@ -26,16 +28,15 @@ class ToDoViewController: UIViewController{
         return table
     }()
     func update(taskPrimary:String,taskSecondary:String?)  {
-        arrayTodo.append(TodoModel(mainTask: taskPrimary, detailTask: taskSecondary))
-        print(taskPrimary)
-        print(taskSecondary)
+        arrayTodo.append(TodoModel(taskPrimary: taskPrimary, taskSecondary: taskSecondary))
+        print("TODOVC update func: taskPrimary = \(taskPrimary)")
+        print("TODOVC update func: taskSecondary = \(taskSecondary)")
         tableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
         view.addSubview(tableView)
         clearBackgroundNavigationBar()
         navItemSetupButton()
@@ -111,7 +112,16 @@ extension ToDoViewController:ToDoViewControllerDelegate{
     
 }
 
-extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
+extension ToDoViewController:UITableViewDataSource,UITableViewDelegate,NewTaskDelegate{
+    func updateEdit(TodoModel: TodoModel) {
+        if let index = arrayTodo.firstIndex(of: TodoModel) {
+            print(index)
+            let indexPath = IndexPath(row: index, section: 0)
+            arrayTodo[indexPath.row] = TodoModel
+            tableView.reloadData()
+        }
+    }
+    
     
     
     
@@ -124,7 +134,6 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoCell
-        //        cell.labelText.text = arrayTodo[indexPath.row].mainTask
         cell.labelText.text = arrayTodo[indexPath.row].taskPrimary
         return cell
     }
@@ -150,8 +159,12 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: false)
         Vibration.soft.vibrate()
         let newTaskVC = NewTaskViewController()
+        newTaskVC.todoModel = arrayTodo[indexPath.row]
+        newTaskVC.delegate2 = self
+        newTaskVC.title = "Change task"
         newTaskVC.textFieldTask.text = arrayTodo[indexPath.row].taskPrimary
         newTaskVC.detailTextView.text = arrayTodo[indexPath.row].taskSecondary
+        print(arrayTodo[indexPath.row].taskPrimary)
         navigationController?.pushViewController(newTaskVC, animated: true)
         
     }

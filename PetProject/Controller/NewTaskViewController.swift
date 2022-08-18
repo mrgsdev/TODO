@@ -7,10 +7,13 @@
 
 import UIKit
 protocol NewTaskDelegate: AnyObject {
-    func updateEdit(taskPrimary: String)
+    func updateEdit(TodoModel: TodoModel)
 }
+
 class NewTaskViewController: UIViewController {
     weak var delegate:ToDoViewControllerDelegate?
+    weak var delegate2: NewTaskDelegate?
+    var todoModel:TodoModel?
     private let scrollView = UIScrollView()
     private let contentView = UIView()
      let textFieldTask: CustomTextField = {
@@ -89,6 +92,7 @@ extension NewTaskViewController{
         navigationItem.rightBarButtonItem = .addButton(systemNameIcon: imageSet.checkmark.rawValue, self, action: #selector(saveButtonPressed))
     }
     @objc private func saveButtonPressed(sender: UIButton){
+      
         Vibration.light.vibrate()
         guard let textField = textFieldTask.text,let textView = detailTextView.text,!textField.isEmpty else {
             Vibration.error.vibrate()
@@ -99,8 +103,18 @@ extension NewTaskViewController{
             self.present(alertController, animated: true)
             return
         }
-        delegate?.update(taskPrimary: textField,taskSecondary: textView)
-        navigationController?.popViewController(animated: true)
+        if title == "Change task"{
+            if let todoModel = todoModel {
+                todoModel.taskPrimary = textField
+                todoModel.taskSecondary = textView
+                delegate2?.updateEdit(TodoModel: todoModel)
+            }
+            print(textField)
+            navigationController?.popViewController(animated: true)
+        }else{
+            delegate?.update(taskPrimary: textField,taskSecondary: textView)
+            navigationController?.popViewController(animated: true)
+        }
     }
     @objc private func popViewButtonPressed(){
         Vibration.light.vibrate()

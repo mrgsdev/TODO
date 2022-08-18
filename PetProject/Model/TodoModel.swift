@@ -18,9 +18,9 @@ class TodoModel:Hashable {
     var taskPrimary:String
     var taskSecondary:String?
     
-    init(mainTask:String,detailTask:String?) {
-        self.taskPrimary = mainTask
-        self.taskSecondary = detailTask
+    init(taskPrimary:String,taskSecondary:String?) {
+        self.taskPrimary = taskPrimary
+        self.taskSecondary = taskSecondary
     }
      
 }
