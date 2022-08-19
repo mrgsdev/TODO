@@ -8,11 +8,12 @@
 import UIKit
 import FirebaseCore
 import FirebaseAuth
+import FirebaseDatabase
 protocol ToDoViewControllerDelegate:AnyObject {
     func update(taskPrimary:String,taskSecondary:String?)
 }
 class ToDoViewController: UIViewController{
-   
+    private var databaseRef = Database.database().reference()
     
     private var arrayTodo = [TodoModel]()
     private let heightCell:CGFloat = 80
@@ -44,7 +45,15 @@ class ToDoViewController: UIViewController{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-     
+        // load data in first VC
+      let user = Auth.auth().currentUser
+        databaseRef.child(user!.uid).child("tasklist").observe(.value) { snapshot in
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+//                print(child.value)
+                print(child.childSnapshot(forPath: "textPrimary").value)
+//                print(child.childSnapshot(forPath: "textSecondary").value)
+            }
+        }
         emptyUser()
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             // [START_EXCLUDE]

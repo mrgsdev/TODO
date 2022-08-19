@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseCore
 protocol NewTaskDelegate: AnyObject {
     func updateEdit(TodoModel: TodoModel)
 }
 
 class NewTaskViewController: UIViewController {
+    private var databaseRef = Database.database().reference()
     weak var delegate:ToDoViewControllerDelegate?
     weak var delegate2: NewTaskDelegate?
     var todoModel:TodoModel?
@@ -112,6 +116,9 @@ extension NewTaskViewController{
             print(textField)
             navigationController?.popViewController(animated: true)
         }else{
+            let user = Auth.auth().currentUser
+            self.databaseRef.child(user!.uid).child("tasklist").childByAutoId().setValue(["textPrimary":textField,
+                                                                                          "textSecondary":textView])
             delegate?.update(taskPrimary: textField,taskSecondary: textView)
             navigationController?.popViewController(animated: true)
         }
