@@ -28,8 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 //cus
         
-        
-//        let viewController = WelcomeController()
+//
+//        let viewController = ProfileController()
 //        navController.viewControllers = [viewController]
         self.window = window
         window.rootViewController = navController

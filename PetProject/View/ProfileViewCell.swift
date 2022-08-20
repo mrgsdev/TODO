@@ -13,7 +13,7 @@ class ProfileViewCell: UITableViewCell {
         let label = UILabel()
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
-        label.textColor = .colorSetTextFieldFont
+        label.textColor = UIColor.TextField.label
         label.font = UIFont(name: "Urbanist-Medium", size: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

@@ -15,7 +15,9 @@ class ProfileController: UIViewController {
         "Change name",
         "Change email",
         "Change photo",
+        "About the developer",
         "Delete an account"
+  
     ]
     //MARK: Create UI with Code
     private lazy var scrollView: UIScrollView = {
@@ -95,6 +97,10 @@ class ProfileController: UIViewController {
         stackView.distribution  = .fill
         stackView.alignment = .center
         stackView.spacing = 0
+        stackView.layer.cornerRadius = 20
+        stackView.clipsToBounds = true
+        stackView.backgroundColor = UIColor.Alert.background
+//        stackView.backgroundColor = .clear
         //        stackView.backgroundColor = UIColor(rgb: 0xE8ECF4)
         //        stackView.layer.cornerRadius = 35
         // autolayout constraint
@@ -261,8 +267,8 @@ extension ProfileController:UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath as IndexPath) as! ProfileViewCell
         cell.labelText.text = "\(arrayCount[indexPath.row])"
         if(indexPath.row >= arrayCount.count-1){
-//            cell.containerView.backgroundColor = UIColor(rgb: 0xB4D9FF)
-            cell.labelText.textColor = UIColor.TextField.label
+            cell.containerView.backgroundColor = UIColor.clear
+            cell.labelText.textColor = UIColor.red
         }
         return cell
     }
@@ -283,6 +289,8 @@ extension ProfileController:UITableViewDataSource,UITableViewDelegate{
         case 3:
             presentVC(controllerVC: ChangePhotoViewController())
         case 4:
+            presentVC(controllerVC: InfoController())
+        case 5:
             presentVC(controllerVC: DeleteAccountController())
         default:
             print("error")

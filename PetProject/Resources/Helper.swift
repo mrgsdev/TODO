@@ -62,8 +62,6 @@ extension UIColor{
         static let labelSecondary = UIColor(named: "Label.Secondary")
         static let labelTertiary = UIColor(named: "Label.Tertiary")
     }
-    static let colorSetTextFieldFill = UIColor(named: "textFieldFill")
-    static let colorSetTextFieldFont = UIColor(named: "textFieldFont")
 }
 //MARK: - Image enum
 enum imageSet:String{
@@ -103,9 +101,9 @@ extension UIBarButtonItem {
         let largeFont = UIFont.systemFont(ofSize: 20)
         let configuration = UIImage.SymbolConfiguration(font: largeFont)
         button.setImage(UIImage(systemName: systemNameIcon,withConfiguration: configuration), for: .normal)
-        button.tintColor = .colorSetTextFieldFont
+        button.tintColor = UIColor.TextField.label
         button.layer.borderWidth = 2
-        button.backgroundColor = .colorSetTextFieldFill
+        button.backgroundColor = UIColor.TextField.background
         button.layer.cornerRadius = 12
         button.addTarget(target, action: action, for: .touchUpInside)
         

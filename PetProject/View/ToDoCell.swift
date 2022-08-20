@@ -14,7 +14,7 @@ class ToDoCell: UITableViewCell {
         label.text = "TodoCell"
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
-        label.textColor = .colorSetTextFieldFont
+        label.textColor = UIColor.TextField.label
         label.font = UIFont(name: UIFont.urbanistMedium , size: 17)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

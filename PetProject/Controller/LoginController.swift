@@ -50,7 +50,7 @@ class LoginController: UIViewController {
                              translatesAutoresizingMaskIntoConstraints: false
         )
         button.backgroundColor = .clear
-        button.setTitleColor(UIColor.colorSetTextFieldFont, for: .normal)
+        button.setTitleColor(UIColor.TextField.label, for: .normal)
         button.contentHorizontalAlignment = .right
         button.setTitle("Forgot Password?", for: .normal)
         button.addTarget(self, action: #selector(forgotPasswordPress),
