@@ -15,6 +15,7 @@ protocol NewTaskDelegate: AnyObject {
 
 class NewTaskViewController: UIViewController {
     private var databaseRef = Database.database().reference()
+    
     weak var delegate:ToDoViewControllerDelegate?
     weak var delegate2: NewTaskDelegate?
     var todoModel:TodoModel?
@@ -90,6 +91,18 @@ class NewTaskViewController: UIViewController {
     
 }
 extension NewTaskViewController{
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        //        if velocity.y > 0,
+        //           arrayTodo.count != 0
+        if velocity.y < 0{
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            print("Hide")
+            
+        } else {
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            print("Unhide")
+        }
+    }
     private func navItemSetupButton() {
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self, action: #selector(popViewButtonPressed))
@@ -116,10 +129,12 @@ extension NewTaskViewController{
             print(textField)
             navigationController?.popViewController(animated: true)
         }else{
+            TodoModel.arrayTodo.removeAll()
             let user = Auth.auth().currentUser
             self.databaseRef.child(user!.uid).child("tasklist").childByAutoId().setValue(["textPrimary":textField,
                                                                                           "textSecondary":textView])
-            delegate?.update(taskPrimary: textField,taskSecondary: textView)
+            
+//            delegate?.update(taskPrimary: textField,taskSecondary: textView)
             navigationController?.popViewController(animated: true)
         }
     }

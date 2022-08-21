@@ -17,7 +17,7 @@ class TodoModel:Hashable {
     }
     var taskPrimary:String
     var taskSecondary:String?
-    
+   static var arrayTodo = [TodoModel]()
     init(taskPrimary:String,taskSecondary:String?) {
         self.taskPrimary = taskPrimary
         self.taskSecondary = taskSecondary
