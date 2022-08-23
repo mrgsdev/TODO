@@ -34,7 +34,6 @@ class AlertController: UIViewController {
     }()
     private lazy var contentView: CustomView = {
         let contentView = CustomView()
-        
         contentView.backgroundColor = UIColor.Alert.background
         contentView.layer.cornerRadius = 24
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,18 +46,16 @@ class AlertController: UIViewController {
         button.tintColor = UIColor.Label.labelPrimary
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 25, weight: .bold, scale: .large)
-        
         let largeBoldDoc = UIImage(systemName: "xmark", withConfiguration: largeConfig)
-        
         button.setImage(largeBoldDoc, for: .normal)
         button.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
         return button
     }()
     lazy var actionButton: CustomButton = {
         let actionButton = CustomButton()
-        actionButton.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0, cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
+        actionButton.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0,
+                                   cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
         actionButton.setTitleColor(UIColor.Button.label, for: .normal)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         actionButton.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
@@ -78,10 +75,10 @@ class AlertController: UIViewController {
         super.viewDidLoad()
         addSubviewElement()
         makeConstraints()
-//                animate()
+     // animate()
     }
     @objc private func actionButtonPressed(){
-//        animate()
+     // animate()
         switch textButton{
         case "Send Email":
             Vibration.soft.vibrate()
@@ -117,25 +114,7 @@ class AlertController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-//    private func animate(){
-//        UIView.animate(withDuration: 0.2,
-//                       animations: {
-//            self.stackView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-//            self.closeButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-//            self.actionButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-//        },
-//                       completion: { _ in
-//            UIView.animate(withDuration: 0.2) {
-//                //                    self.inputErrorLabel.transform = CGAffineTransform.identity
-//                //
-//                //                        self.messageLabel.transform = CGAffineTransform.identity
-//                //
-//                self.stackView.transform = CGAffineTransform.identity
-//                self.closeButton.transform = CGAffineTransform.identity
-//                self.actionButton.transform = CGAffineTransform.identity
-//            }
-//        })
-//    }
+
     func makeConstraints() {
         NSLayoutConstraint.activate([
             actionButton.heightAnchor.constraint(equalToConstant: 45),
@@ -161,14 +140,24 @@ class AlertController: UIViewController {
         ])
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    //    private func animate(){
+    //        UIView.animate(withDuration: 0.2,
+    //                       animations: {
+    //            self.stackView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+    //            self.closeButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+    //            self.actionButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+    //        },
+    //                       completion: { _ in
+    //            UIView.animate(withDuration: 0.2) {
+    //                //                    self.inputErrorLabel.transform = CGAffineTransform.identity
+    //                //
+    //                //                        self.messageLabel.transform = CGAffineTransform.identity
+    //                //
+    //                self.stackView.transform = CGAffineTransform.identity
+    //                self.closeButton.transform = CGAffineTransform.identity
+    //                self.actionButton.transform = CGAffineTransform.identity
+    //            }
+    //        })
+    //    }
     
 }

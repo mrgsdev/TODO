@@ -35,8 +35,7 @@ class LoginController: UIViewController {
     
     private let passwordTextField: CustomTextField = {
         let textField = CustomTextField()
-        
-        textField.tag = 1//Increment accordingly
+        textField.tag = 1
         textField.customPlaceholder(placeholder: "Enter your password")
         textField.isSecureTextEntry = true
         return textField
@@ -44,11 +43,8 @@ class LoginController: UIViewController {
     
     private lazy var forgotPassword:CustomButton = {
         let button = CustomButton()
-        button.settingButton(nameFont: UIFont.urbanistExtraLight,
-                             sizeFont: 14, borderWidth: 0,
-                             cornerRadius: 0,
-                             translatesAutoresizingMaskIntoConstraints: false
-        )
+        button.settingButton(nameFont: UIFont.urbanistExtraLight,sizeFont: 14, borderWidth: 0,
+                             cornerRadius: 0, translatesAutoresizingMaskIntoConstraints: false)
         button.backgroundColor = .clear
         button.setTitleColor(UIColor.TextField.label, for: .normal)
         button.contentHorizontalAlignment = .right
@@ -60,7 +56,8 @@ class LoginController: UIViewController {
     
     private lazy var loginButton: CustomButton = {
         let button = CustomButton()
-        button.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0, cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
+        button.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0,
+                             cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
         button.setTitle("Login", for: .normal)
         button.setTitleColor(UIColor.Button.label, for: .normal)
         button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
@@ -100,7 +97,6 @@ class LoginController: UIViewController {
         googleAuth.backgroundColor = .clear
         googleAuth.setImage(UIImage(named: imageSet.googleIcon.rawValue), for: .normal)
         googleAuth.addTarget(self, action: #selector(googleAuthPressed), for: .touchUpInside)
-        
         return googleAuth
     }()
     private let appleAuth: CustomButton = {
@@ -148,10 +144,6 @@ extension LoginController{
         guard let emailAddress = emailTextField.text, emailAddress != "",
               let password = passwordTextField.text, password != "" else {
             Vibration.error.vibrate()
-            //                        let alertController = UIAlertController(title: "Login Error", message: "Both fields must not be blank.", preferredStyle: .alert)
-            //                        let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            //                        alertController.addAction(okayAction)
-            //                        present(alertController, animated: true, completion: nil)
             let alertController = AlertController()
             alertController.customAlert(text: "Login Error", destText: "Both fields must not be blank.", isHiddenActionButton: true)
             alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -166,11 +158,6 @@ extension LoginController{
             
             if let error = error {
                 Vibration.error.vibrate()
-                //                        let alertController = UIAlertController(title: "Login Error", message: error.localizedDescription, preferredStyle: .alert)
-                //                        let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                //                        alertController.addAction(okayAction)
-                //                        self.present(alertController, animated: true, completion: nil)
-                //
                 let alertController = AlertController()
                 alertController.customAlert(text: "Login Error", destText: error.localizedDescription, isHiddenActionButton: true)
                 alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
@@ -182,22 +169,12 @@ extension LoginController{
             // Email verification
             guard let result = result, result.user.isEmailVerified else {
                 Vibration.error.vibrate()
-                //                        let alertController = UIAlertController(title: "Login Error", message: "You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.", preferredStyle: .alert)
-                //
-                //                        let okayAction = UIAlertAction(title: "Resend email", style: .default, handler: { (action) in
-                //
-                //                            Auth.auth().currentUser?.sendEmailVerification(completion: nil)
-                //                        })
-                //                        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                //                        alertController.addAction(okayAction)
-                //                        alertController.addAction(cancelAction)
-                //
-                //                        self.present(alertController, animated: true, completion: nil)
-                
                 let alertController = AlertController()
                 alertController.textButton = "Send Email"
                 alertController.actionButton.setTitle(alertController.textButton, for: .normal)
-                alertController.customAlert(text: "Login Error", destText:"You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.", isHiddenActionButton: false)
+                alertController.customAlert(text: "Login Error",
+                                            destText:"You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.",
+                                            isHiddenActionButton: false)
                 alertController.modalPresentationStyle = .overCurrentContext
                 alertController.modalTransitionStyle = .crossDissolve
                 self.present(alertController, animated: true)
@@ -212,7 +189,6 @@ extension LoginController{
             let navVc = ToDoViewController()
             UserDefaults.standard.set(true, forKey: "true")
             self.navigationController?.pushViewController(navVc, animated: true)
-            //        UserDefaults.standard.set(true, forKey: "true")
             
         })
         
@@ -280,7 +256,8 @@ extension LoginController{
     }
     private func navItemSetupButton() {
         navigationItem.setHidesBackButton(true, animated: true)
-        navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self, action: #selector(popViewButtonPressed))
+        navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self,
+                                                      action: #selector(popViewButtonPressed))
     }
     private func eyeButton() {
         isSecureImage.image = UIImage(systemName: "eye")

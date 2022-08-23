@@ -55,7 +55,8 @@ class InfoController: UIViewController {
     }()
     private func navItemSetupButton(){
         navigationItem.setHidesBackButton(true, animated: true)
-        navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self, action: #selector(popViewButtonPressed))
+        navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self,
+                                                      action: #selector(popViewButtonPressed))
     }
     
     @objc private func popViewButtonPressed(){
@@ -93,7 +94,6 @@ class InfoController: UIViewController {
         stackView.addArrangedSubview(githubButton)
         
         NSLayoutConstraint.activate([
-//            laberPrimary.heightAnchor.constraint(equalToConstant: 40),
             emailButton.heightAnchor.constraint(equalToConstant: 40),
             labelPrimary.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             labelPrimary.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -103,15 +103,5 @@ class InfoController: UIViewController {
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -20),
         ])
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    } 
 }

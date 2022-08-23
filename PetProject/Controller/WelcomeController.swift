@@ -8,7 +8,7 @@
 import UIKit
 
 class WelcomeController: UIViewController {
-    //.
+    
     //MARK: Create UI with Code
     private let backgroundImage: UIImageView = {
         let backgroundImage = UIImageView(image: UIImage(named: imageSet.background.rawValue))
@@ -29,7 +29,8 @@ class WelcomeController: UIViewController {
     
     private lazy var loginButton: CustomButton = {
         let button = CustomButton()
-        button.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0, cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
+        button.settingButton(nameFont: UIFont.urbanistSemiBold,sizeFont: 17, borderWidth: 0,
+                             cornerRadius: 10,translatesAutoresizingMaskIntoConstraints: false)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor.Button.background
         button.setTitleColor(UIColor.Button.label, for: .normal)
@@ -39,7 +40,8 @@ class WelcomeController: UIViewController {
     
     private lazy var registerButton: CustomButton = {
         let button = CustomButton()
-        button.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0, cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
+        button.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0,
+                             cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
         button.setTitle("Register", for: .normal)
         button.backgroundColor = UIColor.Button.background
         button.setTitleColor(UIColor.Button.label, for: .normal)
@@ -48,8 +50,7 @@ class WelcomeController: UIViewController {
     }()
     
     //MARK: Life Cycle
-    override func viewDidLoad() {
-        //develop-second
+    override func viewDidLoad() { 
         super.viewDidLoad()
         view.addSubview(backgroundImage)
         view.addSubview(stackView)

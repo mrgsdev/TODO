@@ -152,14 +152,7 @@ extension ChangePasswordController{
                         return
                         
                     }
-                    //                if let error = error{
-                    //                    Vibration.error.vibrate()
-                    //                    let alertController = AlertController()
-                    //                    alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
-                    //                    alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                    //                    alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                    //                    self.present(alertController, animated: true)
-                    //                }
+                 
                     Vibration.error.vibrate()
                     let alertController = AlertController()
                     alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)

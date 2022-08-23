@@ -41,7 +41,8 @@ class ForgotController: UIViewController {
     private lazy var sendCodeButton: CustomButton = {
         let sendCodeButton = CustomButton()
         //        sendCodeButton.backgroundColor = .white
-        sendCodeButton.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0, cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
+        sendCodeButton.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0,
+                                     cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
         sendCodeButton.backgroundColor = UIColor.Button.background
         sendCodeButton.setTitleColor(UIColor.Label.labelTertiary, for: .normal)
         sendCodeButton.setTitle("Send Code", for: .normal)
@@ -76,7 +77,6 @@ extension ForgotController{
     @objc private func forgotPasswordPress(){
         // Validate the input
         guard let email = emailTextField.text, email != "" else {
-             
             let alertController = AlertController()
             Vibration.error.vibrate()
             alertController.customAlert(text: "Login Error", destText: "Both fields must not be blank.", isHiddenActionButton: true)
@@ -95,19 +95,11 @@ extension ForgotController{
                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 self.present(alertController, animated: true)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1 ) {
-                    
                     self.navigationController?.popViewController(animated: true)
                 }
                 return
             }
-//            if let error = error{ // no work
-//                let alertController = AlertController()
-//                Vibration.error.vibrate()
-//                alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
-//                alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-//                alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-//                self.present(alertController, animated: true)
-//            }
+            
             let alertController = AlertController()
             Vibration.error.vibrate()
             alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
@@ -122,9 +114,7 @@ extension ForgotController{
         Vibration.light.vibrate()
         navigationController?.popViewController(animated: true)
     }
-    
-   
-    
+     
     private func addSubviewElement()  {
         view.addSubview(stackView)
         stackView.addArrangedSubview(mainLabel)
@@ -137,19 +127,13 @@ extension ForgotController{
     }
     
     private func makeConstraints()  {
-        NSLayoutConstraint.activate([
-            
+        NSLayoutConstraint.activate([ 
             emailTextField.heightAnchor.constraint(equalToConstant: 56),
             sendCodeButton.heightAnchor.constraint(equalToConstant: 56),
             
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
-            
-            
-            
-            
-            
         ])
     }
     

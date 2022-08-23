@@ -53,7 +53,8 @@ class RegisterController: UIViewController {
     }()
     private lazy var registerButton: CustomButton = {
         let registerButton = CustomButton()
-        registerButton.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0, cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
+        registerButton.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0,
+                                     cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
         registerButton.setTitle("Register", for: .normal)
         registerButton.setTitleColor(UIColor.Button.label, for: .normal)
         registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
@@ -194,88 +195,87 @@ extension RegisterController{
         Vibration.light.vibrate()
         navigationController?.popViewController(animated: true)
     }
-@objc private func registerButtonPressed(){
-    Vibration.light.vibrate()
-    // Validate the input
-    guard let name = userTextField.text, name != "",
-          let emailAddress = emailTextField.text, emailAddress != "",
-          let password = passwordTextField.text, password != "",
-          let confirmPassword = confirmPasswordTextField.text,confirmPassword != ""  else {
-        Vibration.error.vibrate()
-        
-        let alertController = AlertController()
-        alertController.customAlert(text: "Registration Error", destText: "Please make sure you provide your name, email address and password to complete the registration.", isHiddenActionButton: true)
-        alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.present(alertController, animated: true)
-        return
-    }
-    guard let password = passwordTextField.text,let confirmPassword = confirmPasswordTextField.text,password == confirmPassword else {
-        Vibration.error.vibrate()
-        
-        let alertController = AlertController()
-        alertController.customAlert(text: "Passwords do not match", destText: "Make sure the input is correct", isHiddenActionButton: true)
-        alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.present(alertController, animated: true)
-        
-        return
-        
-    }
-    
-    // Register the user account on Firebase
-    Auth.auth().createUser(withEmail: emailAddress, password: password, completion: { [weak self] (user, error) in
-        
-        if let error = error {
+    @objc private func registerButtonPressed(){
+        Vibration.light.vibrate()
+        // Validate the input
+        guard let name = userTextField.text, name != "",
+              let emailAddress = emailTextField.text, emailAddress != "",
+              let password = passwordTextField.text, password != "",
+              let confirmPassword = confirmPasswordTextField.text,confirmPassword != ""  else {
             Vibration.error.vibrate()
             
             let alertController = AlertController()
-            alertController.customAlert(text: "Passwords do not match", destText: error.localizedDescription, isHiddenActionButton: true)
+            alertController.customAlert(text: "Registration Error", destText: "Please make sure you provide your name, email address and password to complete the registration.", isHiddenActionButton: true)
+            alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            self.present(alertController, animated: true)
+            return
+        }
+        guard let password = passwordTextField.text,let confirmPassword = confirmPasswordTextField.text,password == confirmPassword else {
+            Vibration.error.vibrate()
+            
+            let alertController = AlertController()
+            alertController.customAlert(text: "Passwords do not match", destText: "Make sure the input is correct", isHiddenActionButton: true)
+            alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            self.present(alertController, animated: true)
+            
+            return
+            
+        }
+        
+        // Register the user account on Firebase
+        Auth.auth().createUser(withEmail: emailAddress, password: password, completion: { [weak self] (user, error) in
+            
+            if let error = error {
+                Vibration.error.vibrate()
+                
+                let alertController = AlertController()
+                alertController.customAlert(text: "Passwords do not match", destText: error.localizedDescription, isHiddenActionButton: true)
+                alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                self?.present(alertController, animated: true)
+                return
+            }
+            
+            self?.databaseRef.child((user?.user.uid)!).child("username").setValue(name)
+            self?.databaseRef.child((user?.user.uid)!).child("useremail").setValue(emailAddress)
+            
+            // Save the name of the user
+            if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+                changeRequest.displayName = name
+                changeRequest.commitChanges(completion: { (error) in
+                    if let error = error {
+                        print("Failed to change the display name: \(error.localizedDescription)")
+                    }
+                })
+            }
+            
+            // Dismiss keyboard
+            self?.view.endEditing(true)
+            
+            // Send verification email
+            Auth.auth().currentUser?.sendEmailVerification()
+            
+            Vibration.success.vibrate()
+            let alertController = AlertController()
+            alertController.customAlert(text: "Email Verification", destText: "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up.", isHiddenActionButton: true)
             alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
             alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
             self?.present(alertController, animated: true)
-            return
-        }
-        
-        self?.databaseRef.child((user?.user.uid)!).child("username").setValue(name)
-        self?.databaseRef.child((user?.user.uid)!).child("useremail").setValue(emailAddress)
-        
-        // Save the name of the user
-        if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
-            changeRequest.displayName = name
-            changeRequest.commitChanges(completion: { (error) in
-                if let error = error {
-                    print("Failed to change the display name: \(error.localizedDescription)")
-                }
-            })
-        }
-        
-        // Dismiss keyboard
-        self?.view.endEditing(true)
-        
-        // Send verification email
-        Auth.auth().currentUser?.sendEmailVerification() 
-        
-        Vibration.success.vibrate()
-        let alertController = AlertController()
-        alertController.customAlert(text: "Email Verification", destText: "We've just sent a confirmation email to your email address. Please check your inbox and click the verification link in that email to complete the sign up.", isHiddenActionButton: true)
-        alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self?.present(alertController, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1 ) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1 ) {
+                
+                self?.navigationController?.popViewController(animated: true)
+            }
             
-            self?.navigationController?.popViewController(animated: true)
-        }
-        
-    })
-}
+        })
+    }
     private func navItemSetupButton() {
         navigationItem.setHidesBackButton(true, animated: true)
         navigationItem.leftBarButtonItem = .addButton(systemNameIcon: imageSet.backButton.rawValue,self, action: #selector(popViewButtonPressed))
     }
     private func addSubviewElement()  {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.backgroundColor = .yellow
+        scrollView.translatesAutoresizingMaskIntoConstraints = false 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -314,28 +314,28 @@ extension RegisterController{
             passwordTextField.heightAnchor.constraint(equalToConstant: 56),
             confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 56),
             registerButton.heightAnchor.constraint(equalToConstant: 56),
-            //
+            
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             stackView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
-            //
+           
             orRegisterWith.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             orRegisterWith.bottomAnchor.constraint(equalTo: stackView.bottomAnchor,constant: 20),
             orRegisterWith.widthAnchor.constraint(equalToConstant: 110),
-            //
+       
             lineView.bottomAnchor.constraint(equalTo: orRegisterWith.centerYAnchor),
             lineView.leftAnchor.constraint(equalTo: contentView.leftAnchor,constant: 20),
             lineView.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: -20),
             lineView.heightAnchor.constraint(equalToConstant: 1),
-
-            //
-
+            
+       
+            
             stackViewGoogleApple.topAnchor.constraint(equalTo: orRegisterWith.bottomAnchor,constant: 10),
             stackViewGoogleApple.leftAnchor.constraint(equalTo: contentView.leftAnchor,constant: 20),
             stackViewGoogleApple.rightAnchor.constraint(equalTo: contentView.rightAnchor,constant: -20),
             stackViewGoogleApple.heightAnchor.constraint(equalToConstant: 56),
             stackViewGoogleApple.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-
+            
         ])
     }
 }
@@ -343,11 +343,11 @@ extension RegisterController{
 extension RegisterController:UIScrollViewDelegate{
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0) {
-//            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            //            self.navigationController?.setNavigationBarHidden(true, animated: true)
             print("Hide")
             
         } else {
-//            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            //            self.navigationController?.setNavigationBarHidden(false, animated: true)
             print("Unhide")
         }
     }
@@ -355,13 +355,13 @@ extension RegisterController:UIScrollViewDelegate{
 extension RegisterController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
-              if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-                 nextField.becomeFirstResponder()
-              } else {
-                 // Not found, so remove keyboard.
-                 textField.resignFirstResponder()
-              }
-              // Do not add a line break
-              return false
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
     }
 } 

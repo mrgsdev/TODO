@@ -121,20 +121,20 @@ extension NewTaskViewController{
             return
         }
         if title == "Change task"{
-            if let todoModel = todoModel {
-                todoModel.taskPrimary = textField
-                todoModel.taskSecondary = textView
-                delegate2?.updateEdit(TodoModel: todoModel)
-            }
+//            if let todoModel = todoModel {
+//                todoModel.taskPrimary = textField
+//                todoModel.taskSecondary = textView
+//                delegate2?.updateEdit(TodoModel: todoModel)
+//            }
             print(textField)
             navigationController?.popViewController(animated: true)
         }else{
             TodoModel.arrayTodo.removeAll()
             let user = Auth.auth().currentUser
             self.databaseRef.child(user!.uid).child("tasklist").childByAutoId().setValue(["textPrimary":textField,
-                                                                                          "textSecondary":textView])
+                "textSecondary":textView])
             
-//            delegate?.update(taskPrimary: textField,taskSecondary: textView)
+//          delegate?.update(taskPrimary: textField,taskSecondary: textView)
             navigationController?.popViewController(animated: true)
         }
     }

@@ -24,9 +24,7 @@ class ProfileController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.frame = self.view.bounds
         scrollView.contentSize = contentSize
-        scrollView.backgroundColor = UIColor.Support.background
-//        scrollView.bounces = false
-//        scrollView.alwaysBounceVertical = false
+        scrollView.backgroundColor = UIColor.Support.background 
         scrollView.showsVerticalScrollIndicator = false
         return scrollView
     }()
@@ -100,10 +98,6 @@ class ProfileController: UIViewController {
         stackView.layer.cornerRadius = 20
         stackView.clipsToBounds = true
         stackView.backgroundColor = UIColor.Alert.background
-//        stackView.backgroundColor = .clear
-        //        stackView.backgroundColor = UIColor(rgb: 0xE8ECF4)
-        //        stackView.layer.cornerRadius = 35
-        // autolayout constraint
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -143,33 +137,9 @@ class ProfileController: UIViewController {
             emailUserLabel.text =  email
         }
        
-          
-//          var multiFactorString = "MultiFactor: "
-//          for info in user!.multiFactor.enrolledFactors {
-//            multiFactorString += info.displayName ?? "[DispayName]"
-//            multiFactorString += " "
-//          }
+           
         
         }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        let user = Auth.auth().currentUser
-//        if let user = user {
-//          let uid = user.uid
-//          let email = user.email
-//            let userName = user.displayName
-//            guard let photoURL = user.photoURL else { return  }
-//          var multiFactorString = "MultiFactor: "
-//          for info in user.multiFactor.enrolledFactors {
-//            multiFactorString += info.displayName ?? "[DispayName]"
-//            multiFactorString += " "
-//          }
-////            imageProfile.downloaded(from: photoURL)
-////            print("NAME \(userName)")
-////            nameUserLabel.text = userName
-//            emailUserLabel.text =  email
-//        }
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
