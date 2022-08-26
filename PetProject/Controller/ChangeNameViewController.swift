@@ -11,8 +11,6 @@ import FirebaseAuth
 import FirebaseCore
 class ChangeNameViewController: UIViewController {
     
-    
-    
     //MARK: Create UI with Code
     private let labelPrimary: UILabel = {
         let label = UILabel()
