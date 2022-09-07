@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseCore
-class ChangeNameViewController: UIViewController {
+class ChangeNameVC: UIViewController {
     
     //MARK: Create UI with Code
     private let labelPrimary: UILabel = {
@@ -74,7 +74,7 @@ class ChangeNameViewController: UIViewController {
     
 }
 
-extension ChangeNameViewController{
+extension ChangeNameVC{
     @objc private func popViewButtonPressed(){
         Vibration.light.vibrate()
         navigationController?.popViewController(animated: true)
@@ -141,7 +141,7 @@ extension ChangeNameViewController{
         ])
     }
 }
-extension ChangeNameViewController:UITextFieldDelegate{
+extension ChangeNameVC:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }

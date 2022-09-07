@@ -105,7 +105,7 @@ extension ToDoViewController:ToDoViewControllerDelegate{
     }
     @objc private func openProfile(){
         Vibration.light.vibrate()
-        let loadVC = ProfileController()
+        let loadVC = ProfileVC()
         navigationController?.pushViewController(loadVC, animated: true)
     }
     private func navItemSetupButton()  {

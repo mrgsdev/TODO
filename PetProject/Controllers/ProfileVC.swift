@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 import AudioToolbox
-class ProfileController: UIViewController {
+class ProfileVC: UIViewController {
     let arrayCount = [
         "Change password",
         "Change name",
@@ -157,7 +157,7 @@ class ProfileController: UIViewController {
 }
 
 
-extension ProfileController{
+extension ProfileVC{
     @objc private func popViewButtonPressed(){
         navigationController?.popViewController(animated: true)
         Vibration.light.vibrate()
@@ -222,7 +222,7 @@ extension ProfileController{
 }
 
 
-extension ProfileController:UITableViewDataSource,UITableViewDelegate{
+extension ProfileVC:UITableViewDataSource,UITableViewDelegate{
     func presentVC(controllerVC: UIViewController)  {
         let loadVC = controllerVC
         navigationController?.pushViewController(loadVC, animated: true)
@@ -251,17 +251,17 @@ extension ProfileController:UITableViewDataSource,UITableViewDelegate{
         
         switch indexPath.row{
         case 0:
-            presentVC(controllerVC: ChangePasswordController())
+            presentVC(controllerVC: ChangePasswordVC())
         case 1:
-            presentVC(controllerVC: ChangeNameViewController())
+            presentVC(controllerVC: ChangeNameVC())
         case 2:
-            presentVC(controllerVC: ChangeEmailViewController())
+            presentVC(controllerVC: ChangeEmailVC())
         case 3:
-            presentVC(controllerVC: ChangePhotoViewController())
+            presentVC(controllerVC: ChangePhotoVC())
         case 4:
-            presentVC(controllerVC: InfoController())
+            presentVC(controllerVC: AboutDevVC())
         case 5:
-            presentVC(controllerVC: DeleteAccountController())
+            presentVC(controllerVC: DeleteAccountVC())
         default:
             print("error")
         }
