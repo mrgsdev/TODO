@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2ECF6810B5B9B4B3BD58D6C3 /* Pods_PetProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */; };
+		4225166128C8D6E1007D537F /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4225166028C8D6E1007D537F /* Tasks.swift */; };
 		4227C29728A962700096428C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29628A962700096428C /* AppDelegate.swift */; };
 		4227C29928A962700096428C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29828A962700096428C /* SceneDelegate.swift */; };
 		4227C2A028A962710096428C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4227C29F28A962710096428C /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.release.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.release.xcconfig"; sourceTree = "<group>"; };
 		3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4225166028C8D6E1007D537F /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		4227C29328A962700096428C /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4227C29628A962700096428C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4227C29828A962700096428C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				426FE2E528A968F20032FA83 /* TodoModel.swift */,
 				42C2534C28B11A6200498886 /* LinkItem.swift */,
+				4225166028C8D6E1007D537F /* Tasks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4225166128C8D6E1007D537F /* Tasks.swift in Sources */,
 				4227C2C028A9651F0096428C /* ProfileViewCell.swift in Sources */,
 				42C2534B28B111FA00498886 /* InfoController.swift in Sources */,
 				426FE2D428A968250032FA83 /* ProfileController.swift in Sources */,
