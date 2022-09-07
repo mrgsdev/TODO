@@ -7,7 +7,7 @@
 
 import UIKit
 import SafariServices
-class InfoController: UIViewController {
+class AboutDevVC: UIViewController {
      
     private let labelPrimary: UILabel = {
         let label = UILabel()

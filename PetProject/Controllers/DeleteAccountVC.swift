@@ -9,7 +9,7 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
-class DeleteAccountController: UIViewController {
+class DeleteAccountVC: UIViewController {
     //MARK: Create UI with Code
     private let labelPrimary: UILabel = {
         let label = UILabel()
@@ -72,7 +72,7 @@ class DeleteAccountController: UIViewController {
     
 }
 
-extension DeleteAccountController{
+extension DeleteAccountVC{
     @objc private func popViewButtonPressed(){
         Vibration.light.vibrate()
         navigationController?.popViewController(animated: true)

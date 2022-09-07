@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChangePhotoViewController: UIViewController {
+class ChangePhotoVC: UIViewController {
     
     //MARK: Create UI with Code
     var imagePicker = UIImagePickerController()
@@ -83,7 +83,7 @@ class ChangePhotoViewController: UIViewController {
 }
 
 
-extension ChangePhotoViewController{
+extension ChangePhotoVC{
     @objc private func popViewButtonPressed(){
         Vibration.light.vibrate()
         navigationController?.popViewController(animated: true)

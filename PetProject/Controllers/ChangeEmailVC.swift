@@ -1,20 +1,20 @@
 //
-//  ChangePasswordController.swift
+//  ChangeEmailViewController.swift
 //  PetProject
 //
 //  Created by MRGS on 14.08.2022.
 //
 
+
 import UIKit
-import FirebaseCore
 import FirebaseAuth
-class ChangePasswordController: UIViewController {
-    
+import FirebaseCore
+class ChangeEmailVC: UIViewController {
     //MARK: Create UI with Code
     private let labelPrimary: UILabel = {
         let label = UILabel()
-        label.text = "Create new password"
-        label.font = UIFont(name: UIFont.urbanistSemiBold, size: 30)
+        label.text = "Create new email"
+            label.font = UIFont(name: UIFont.urbanistSemiBold, size: 30)
         label.textColor = UIColor.Label.labelPrimary
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
@@ -23,103 +23,84 @@ class ChangePasswordController: UIViewController {
     }()
     private let labelSecondary: UILabel = {
         let label = UILabel()
-        label.text = "Your new password must be unique from those previously used."
+        label.text = "Your new email must be unique from those previously used."
         label.textColor = UIColor.Label.labelSecondary
-        label.font = UIFont(name: UIFont.urbanistSemiBold, size: 16)
+        label.font =  UIFont(name: UIFont.urbanistExtraLight, size: 16)
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let oldPasswordTextField: CustomTextField = {
+    private let emailTextField: CustomTextField = {
         let textfield = CustomTextField()
         textfield.tag = 0
-        textfield.customPlaceholder(placeholder: "Old Password")
+        textfield.customPlaceholder(placeholder: "Enter new email")
         return textfield
     }()
-    private let newPasswordTextField: CustomTextField = {
+    private let passwordTextField: CustomTextField = {
         let textfield = CustomTextField()
         textfield.tag = 1
-        textfield.customPlaceholder(placeholder: "New Password")
-        return textfield
-    }()
-    private let confirmPasswordTextField: CustomTextField = {
-        let textfield = CustomTextField()
-        textfield.tag = 2
-        textfield.customPlaceholder(placeholder: "Confirm Password")
+        textfield.customPlaceholder(placeholder: "Enter your password")
         return textfield
     }()
     
-    
-    private lazy var resetPasswordButton: CustomButton = {
+     
+    private lazy var resetEmailButton: CustomButton = {
         let button = CustomButton()
-        
         button.settingButton(nameFont: UIFont.urbanistSemiBold, sizeFont: 17, borderWidth: 0, cornerRadius: 10, translatesAutoresizingMaskIntoConstraints: false)
-        button.setTitle("Reset Password", for: .normal)
         button.setTitleColor(UIColor.Button.label, for: .normal)
-        button.addTarget(self, action: #selector(changePasswordButtonPressed), for: .touchUpInside)
+        button.setTitle("Save New Email", for: .normal)
+        button.addTarget(self, action: #selector(changeEmailButtonPressed), for: .touchUpInside)
         return button
     }()
-    
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution  = .fill
         stackView.alignment = .fill
         stackView.spacing = 20
-        // autolayout constraint
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
     //MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        oldPasswordTextField.delegate = self
-        newPasswordTextField.delegate = self
-        confirmPasswordTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         view.backgroundColor = UIColor.Support.background
-        clearBackgroundNavigationBar()
         hideKeyboardWhenTappedAround()
+        clearBackgroundNavigationBar()
         navItemSetupButton()
         addSubviewElement()
         makeConstraints()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    } 
+    
+    
 }
-extension ChangePasswordController{
-    @objc private func popViewButtonPressed(){
-        Vibration.light.vibrate()
-        navigationController?.popViewController(animated: true)
-    }
-    @objc private func changePasswordButtonPressed(){
-        Vibration.light.vibrate()
-        // Validate the input
-        guard let oldPassword = oldPasswordTextField.text,let password = newPasswordTextField.text,let confirmPassword = confirmPasswordTextField.text, password != "",confirmPassword != "",oldPassword != "" else {
-            Vibration.error.vibrate()
-            let alertController = AlertController()
-            alertController.customAlert(text: "Oooops😓", destText: "You forgot to write a *** password", isHiddenActionButton: true)
-            alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-            alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-            self.present(alertController, animated: true)
-            
-            return
-        }
 
-      
-        guard let password = newPasswordTextField.text,let confirmPassword = confirmPasswordTextField.text,password == confirmPassword else {
+extension ChangeEmailVC{
+    @objc private func popViewButtonPressed(){
+        navigationController?.popViewController(animated: true)
+        Vibration.light.vibrate()
+    }
+    @objc private func changeEmailButtonPressed(){
+        print(#function)
+        // Validate the input
+        Vibration.light.vibrate()
+        guard let password = passwordTextField.text,let email = emailTextField.text, email != "",password != "" else {
             Vibration.error.vibrate()
             let alertController = AlertController()
-            alertController.customAlert(text: "Passwords do not match", destText: "Make sure the input is correct", isHiddenActionButton: true)
+            alertController.customAlert(text: "Error", destText: "Both fields must not be blank.", isHiddenActionButton: true)
             alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
             alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
             self.present(alertController, animated: true)
+
             return
-            
         }
+        
         let user = Auth.auth().currentUser
-        let credential: AuthCredential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: oldPassword) 
+        let credential: AuthCredential = EmailAuthProvider.credential(withEmail: (user?.email)!, password: password)
         user?.reauthenticate(with: credential) { result,error  in
             if let error = error {
                 Vibration.error.vibrate()
@@ -128,46 +109,35 @@ extension ChangePasswordController{
                 alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 self.present(alertController, animated: true)
-                print("DEL=\(oldPassword)=") 
-                print("DEL=\(String(describing: user?.email))=")
-            } else {
-                print("Suc\(oldPassword)")
-                print("Suc=\(String(describing: user?.email))=")
-                
-                
-                
-                Auth.auth().currentUser?.updatePassword(to: password) { error in
-                     
-                            guard let error = error else {
-                        let alertController = AlertController()
+                print("PASSWORD=\(password)=")
+                print("EMAIL OLD=\(String(describing: user?.email))=")
+            }else{
+                Auth.auth().currentUser?.updateEmail(to: email) { error in
+                    guard let error = error else {
                         Vibration.success.vibrate()
-                        alertController.customAlert(text: "Password Change🥳", destText: "", isHiddenActionButton: true)
+                        let alertController = AlertController()
+                        alertController.customAlert(text: "Email Change🥳", destText: "All that's left is to confirm the mail", isHiddenActionButton: true)
+                        Auth.auth().currentUser?.sendEmailVerification(completion: nil)
                         alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                         alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                         self.present(alertController, animated: true)
                         
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.navigationController?.popViewController(animated: true)
-                        }
+                          DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                              self.navigationController?.popViewController(animated: true)
+                          }
                         return
-                        
                     }
-                 
                     Vibration.error.vibrate()
                     let alertController = AlertController()
                     alertController.customAlert(text: "Error", destText: error.localizedDescription, isHiddenActionButton: true)
                     alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                     alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                     self.present(alertController, animated: true)
-                }
-                
-                
-                
             }
+       
+
         }
-        
-        //
-        
+    }
     }
     private func navItemSetupButton()  {
         navigationItem.setHidesBackButton(true, animated: true)
@@ -177,34 +147,33 @@ extension ChangePasswordController{
         view.addSubview(stackView)
         stackView.addArrangedSubview(labelPrimary)
         stackView.addArrangedSubview(labelSecondary)
-        stackView.addArrangedSubview(oldPasswordTextField)
-        stackView.addArrangedSubview(newPasswordTextField)
-        stackView.addArrangedSubview(confirmPasswordTextField)
-        stackView.addArrangedSubview(resetPasswordButton)
+        stackView.addArrangedSubview(emailTextField)
+        stackView.addArrangedSubview(passwordTextField)
+        stackView.addArrangedSubview(resetEmailButton)
     }
     private func makeConstraints()  {
         NSLayoutConstraint.activate([
-            oldPasswordTextField.heightAnchor.constraint(equalToConstant: 56),
-            newPasswordTextField.heightAnchor.constraint(equalToConstant: 56),
-            confirmPasswordTextField.heightAnchor.constraint(equalToConstant: 56),
-            resetPasswordButton.heightAnchor.constraint(equalToConstant: 56),
-            
+            passwordTextField.heightAnchor.constraint(equalToConstant: 56),
+            emailTextField.heightAnchor.constraint(equalToConstant: 56),
+            resetEmailButton.heightAnchor.constraint(equalToConstant: 56),
+        
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
         ])
     }
 }
-extension ChangePasswordController:UITextFieldDelegate{
+
+extension ChangeEmailVC:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
-              if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-                 nextField.becomeFirstResponder()
-              } else {
-                 // Not found, so remove keyboard.
-                 textField.resignFirstResponder()
-              }
-              // Do not add a line break
-              return false
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
     }
 }
