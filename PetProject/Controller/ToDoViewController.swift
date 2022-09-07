@@ -14,7 +14,8 @@ protocol ToDoViewControllerDelegate:AnyObject {
 }
 class ToDoViewController: UIViewController{
     private var databaseRef = Database.database().reference()
-    //    private var arrayTodo = [TodoModel]()
+        private var arrayTodo = [Tasks]()
+    
     private let heightCell:CGFloat = 80
     var handle: AuthStateDidChangeListenerHandle?
     private let tableView: UITableView = {
@@ -35,17 +36,23 @@ class ToDoViewController: UIViewController{
     }
     func loadDataFirebase()  {
         let user = Auth.auth().currentUser
-        databaseRef.child(user!.uid).child("tasklist").observe(.value) { snapshot in
-            for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                //                print(snap.value)
-                let textPrimary = snap.childSnapshot(forPath: "textPrimary").value!
-                let textSecondary = snap.childSnapshot(forPath: "textSecondary").value!
-                print(snap.childSnapshot(forPath: "textPrimary").value!)
-                TodoModel.arrayTodo.append(TodoModel(taskPrimary: textPrimary as! String, taskSecondary: textSecondary as! String))
-                self.tableView.reloadData()
+      
+        databaseRef.child("users").child(user!.uid).child("tasklist").observe(.value) { snapshot in
+//            for snap in snapshot.children.allObjects as! [DataSnapshot] {
+//                //                print(snap.value)
+//                let textPrimary = snap.childSnapshot(forPath: "textPrimary").value!
+//                let textSecondary = snap.childSnapshot(forPath: "textSecondary").value!
+//                self.tableView.reloadData()
+//            }
+            var junkArray = [Tasks]()
+            for item in snapshot.children{
+                let task = Tasks(snapshot: item as! DataSnapshot)
+                junkArray.append(task)
             }
-            print("count = \(TodoModel.arrayTodo.count)")
+            self.arrayTodo = junkArray
+            self.tableView.reloadData()
         }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,29 +126,29 @@ extension ToDoViewController:ToDoViewControllerDelegate{
     
 }
 
-extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
-    //    func updateEdit(TodoModel: TodoModel) {
-    //        if let index = TodoModel.arrayTodo.firstIndex(of: TodoModel) {
-    //            print(index)
-    //            let indexPath = IndexPath(row: index, section: 0)
-    //            arrayTodo[indexPath.row] = TodoModel
-    //            tableView.reloadData()
-    //        }
-    //    }
+extension ToDoViewController:UITableViewDataSource,UITableViewDelegate,NewTaskDelegate{
+        func updateEdit(Tasks: Tasks) {
+            if let index = arrayTodo.firstIndex(of: Tasks) {
+                print(index)
+                let indexPath = IndexPath(row: index, section: 0)
+                arrayTodo[indexPath.row] = Tasks
+                tableView.reloadData()
+            }
+        }
     
     
     
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TodoModel.arrayTodo.count
+        return arrayTodo.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightCell
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath) as! ToDoCell
-        cell.labelText.text = TodoModel.arrayTodo[indexPath.row].taskPrimary
+        cell.labelText.text = arrayTodo[indexPath.row].title
         print(cell)
         return cell
     }
@@ -167,12 +174,11 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate{
         tableView.deselectRow(at: indexPath, animated: false)
         Vibration.soft.vibrate()
         let newTaskVC = NewTaskViewController()
-        newTaskVC.todoModel = TodoModel.arrayTodo[indexPath.row]
-        //        newTaskVC.delegate2 = self
+        newTaskVC.todoModel = arrayTodo[indexPath.row]
+        newTaskVC.delegate2 = self
         newTaskVC.title = "Change task"
-        newTaskVC.textFieldTask.text = TodoModel.arrayTodo[indexPath.row].taskPrimary
-        newTaskVC.detailTextView.text = TodoModel.arrayTodo[indexPath.row].taskSecondary
-        //        print(arrayTodo[indexPath.row].taskPrimary)
+        newTaskVC.textFieldTask.text = arrayTodo[indexPath.row].title
+        newTaskVC.detailTextView.text = arrayTodo[indexPath.row].description
         navigationController?.pushViewController(newTaskVC, animated: true)
         
     }

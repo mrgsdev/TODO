@@ -10,7 +10,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseCore
 protocol NewTaskDelegate: AnyObject {
-    func updateEdit(TodoModel: TodoModel)
+    func updateEdit(Tasks: Tasks)
 }
 
 class NewTaskViewController: UIViewController {
@@ -18,7 +18,7 @@ class NewTaskViewController: UIViewController {
     
     weak var delegate:ToDoViewControllerDelegate?
     weak var delegate2: NewTaskDelegate?
-    var todoModel:TodoModel?
+    var todoModel:Tasks?
     private let scrollView = UIScrollView()
     private let contentView = UIView()
      let textFieldTask: CustomTextField = {
@@ -129,9 +129,8 @@ extension NewTaskViewController{
             print(textField)
             navigationController?.popViewController(animated: true)
         }else{
-            TodoModel.arrayTodo.removeAll()
             let user = Auth.auth().currentUser
-            self.databaseRef.child(user!.uid).child("tasklist").childByAutoId().setValue(["textPrimary":textField,
+            self.databaseRef.child("users").child(user!.uid).child("tasklist").child(textField.lowercased()).setValue(["textPrimary":textField,
                 "textSecondary":textView])
             
 //          delegate?.update(taskPrimary: textField,taskSecondary: textView)
