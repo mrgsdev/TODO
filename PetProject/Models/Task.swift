@@ -7,8 +7,8 @@
 
 import Foundation
 import FirebaseDatabase
-class Tasks:Hashable{
-    static func == (lhs: Tasks, rhs: Tasks) -> Bool {
+class Task:Hashable{
+    static func == (lhs: Task, rhs: Task) -> Bool {
         lhs.title == rhs.title
     }
     
@@ -27,8 +27,8 @@ class Tasks:Hashable{
     }
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String:AnyObject]
-        title = snapshotValue["textPrimary"] as! String
-        description = snapshotValue["textSecondary"] as! String
+        title = snapshotValue["title"] as! String
+        description = snapshotValue["description"] as! String
 //        completed = snapshotValue["completed"] as! Bool
         ref = snapshot.ref
     }

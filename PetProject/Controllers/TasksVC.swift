@@ -12,9 +12,9 @@ import FirebaseDatabase
 protocol ToDoViewControllerDelegate:AnyObject {
     func update(taskPrimary:String,taskSecondary:String?)
 }
-class ToDoViewController: UIViewController{
-    private var databaseRef = Database.database().reference()
-        private var arrayTodo = [Tasks]()
+class TasksVC: UIViewController{
+    private var databaseRef = Database.database().reference(withPath: "users")
+        private var arrayTodo = [Task]()
     
     private let heightCell:CGFloat = 80
     var handle: AuthStateDidChangeListenerHandle?
@@ -36,21 +36,14 @@ class ToDoViewController: UIViewController{
     }
     func loadDataFirebase()  {
         let user = Auth.auth().currentUser
-      
-        databaseRef.child("users").child(user!.uid).child("tasklist").observe(.value) { snapshot in
-//            for snap in snapshot.children.allObjects as! [DataSnapshot] {
-//                //                print(snap.value)
-//                let textPrimary = snap.childSnapshot(forPath: "textPrimary").value!
-//                let textSecondary = snap.childSnapshot(forPath: "textSecondary").value!
-//                self.tableView.reloadData()
-//            }
-            var junkArray = [Tasks]()
+        databaseRef.child(user!.uid).child("tasks").observe(.value) { [weak self] snapshot in
+            var junkArray = [Task]()
             for item in snapshot.children{
-                let task = Tasks(snapshot: item as! DataSnapshot)
+                let task = Task(snapshot: item as! DataSnapshot)
                 junkArray.append(task)
             }
-            self.arrayTodo = junkArray
-            self.tableView.reloadData()
+            self?.arrayTodo = junkArray
+            self?.tableView.reloadData()
         }
         
     }
@@ -63,7 +56,6 @@ class ToDoViewController: UIViewController{
         clearBackgroundNavigationBar()
         navItemSetupButton()
         makeConstraints()
-        
         loadDataFirebase()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -96,10 +88,10 @@ class ToDoViewController: UIViewController{
 }
 
 
-extension ToDoViewController:ToDoViewControllerDelegate{
+extension TasksVC:ToDoViewControllerDelegate{
     @objc private func addNewNoteButtonPressed(){
         Vibration.light.vibrate()
-        let loadVC = NewTaskViewController()
+        let loadVC = NewTaskVC()
         loadVC.delegate = self
         navigationController?.pushViewController(loadVC, animated: true)
     }
@@ -126,8 +118,8 @@ extension ToDoViewController:ToDoViewControllerDelegate{
     
 }
 
-extension ToDoViewController:UITableViewDataSource,UITableViewDelegate,NewTaskDelegate{
-        func updateEdit(Tasks: Tasks) {
+extension TasksVC:UITableViewDataSource,UITableViewDelegate,NewTaskDelegate{
+        func updateEdit(Tasks: Task) {
             if let index = arrayTodo.firstIndex(of: Tasks) {
                 print(index)
                 let indexPath = IndexPath(row: index, section: 0)
@@ -173,7 +165,7 @@ extension ToDoViewController:UITableViewDataSource,UITableViewDelegate,NewTaskDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         Vibration.soft.vibrate()
-        let newTaskVC = NewTaskViewController()
+        let newTaskVC = NewTaskVC()
         newTaskVC.todoModel = arrayTodo[indexPath.row]
         newTaskVC.delegate2 = self
         newTaskVC.title = "Change task"

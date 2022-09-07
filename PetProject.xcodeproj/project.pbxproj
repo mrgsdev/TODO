@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2ECF6810B5B9B4B3BD58D6C3 /* Pods_PetProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */; };
-		4225166128C8D6E1007D537F /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4225166028C8D6E1007D537F /* Tasks.swift */; };
+		4225166128C8D6E1007D537F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4225166028C8D6E1007D537F /* Task.swift */; };
 		4227C29728A962700096428C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29628A962700096428C /* AppDelegate.swift */; };
 		4227C29928A962700096428C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29828A962700096428C /* SceneDelegate.swift */; };
 		4227C2A028A962710096428C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4227C29F28A962710096428C /* Assets.xcassets */; };
 		4227C2A328A962710096428C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4227C2A128A962710096428C /* LaunchScreen.storyboard */; };
-		4227C2B028A9632B0096428C /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2AF28A9632B0096428C /* WelcomeController.swift */; };
+		4227C2B028A9632B0096428C /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2AF28A9632B0096428C /* WelcomeVC.swift */; };
 		4227C2B228A963CE0096428C /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B128A963CE0096428C /* Helper.swift */; };
 		4227C2B428A9644C0096428C /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B328A9644C0096428C /* CustomButton.swift */; };
 		4227C2B628A9646A0096428C /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C2B528A9646A0096428C /* CustomImageView.swift */; };
@@ -33,33 +33,34 @@
 		426FE2C828A966670032FA83 /* Urbanist-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2BF28A966670032FA83 /* Urbanist-ExtraBold.ttf */; };
 		426FE2C928A966670032FA83 /* Urbanist-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2C028A966670032FA83 /* Urbanist-Medium.ttf */; };
 		426FE2CA28A966670032FA83 /* Urbanist-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 426FE2C128A966670032FA83 /* Urbanist-ExtraLight.ttf */; };
-		426FE2CC28A966DB0032FA83 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CB28A966DB0032FA83 /* RegisterController.swift */; };
+		426FE2CC28A966DB0032FA83 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CB28A966DB0032FA83 /* RegisterVC.swift */; };
 		426FE2CE28A967470032FA83 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CD28A967470032FA83 /* AlertController.swift */; };
-		426FE2D028A967890032FA83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CF28A967890032FA83 /* LoginController.swift */; };
-		426FE2D228A967990032FA83 /* ForgotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D128A967990032FA83 /* ForgotController.swift */; };
+		426FE2D028A967890032FA83 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2CF28A967890032FA83 /* LoginVC.swift */; };
+		426FE2D228A967990032FA83 /* ForgotPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D128A967990032FA83 /* ForgotPassVC.swift */; };
 		426FE2D428A968250032FA83 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D328A968250032FA83 /* ProfileVC.swift */; };
 		426FE2D628A9683D0032FA83 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D528A9683D0032FA83 /* ChangePasswordVC.swift */; };
 		426FE2D828A9685A0032FA83 /* ChangeNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D728A9685A0032FA83 /* ChangeNameVC.swift */; };
 		426FE2DA28A9686E0032FA83 /* ChangeEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2D928A9686E0032FA83 /* ChangeEmailVC.swift */; };
 		426FE2DC28A9688C0032FA83 /* ChangePhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2DB28A9688C0032FA83 /* ChangePhotoVC.swift */; };
 		426FE2E028A968AA0032FA83 /* DeleteAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2DF28A968AA0032FA83 /* DeleteAccountVC.swift */; };
-		426FE2E228A968BF0032FA83 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E128A968BF0032FA83 /* ToDoViewController.swift */; };
+		426FE2E228A968BF0032FA83 /* TasksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E128A968BF0032FA83 /* TasksVC.swift */; };
+		42B4687428C927B8003C02AC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4687328C927B8003C02AC /* Users.swift */; };
 		42C2534B28B111FA00498886 /* AboutDevVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534A28B111FA00498886 /* AboutDevVC.swift */; };
 		42C2534D28B11A6200498886 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534C28B11A6200498886 /* LinkItem.swift */; };
-		42F0A8D428A9715400F36FBF /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A8D328A9715400F36FBF /* NewTaskViewController.swift */; };
+		42F0A8D428A9715400F36FBF /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A8D328A9715400F36FBF /* NewTaskVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.release.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.release.xcconfig"; sourceTree = "<group>"; };
 		3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4225166028C8D6E1007D537F /* Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		4225166028C8D6E1007D537F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		4227C29328A962700096428C /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4227C29628A962700096428C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4227C29828A962700096428C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4227C29F28A962710096428C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4227C2A228A962710096428C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4227C2A428A962710096428C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4227C2AF28A9632B0096428C /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		4227C2AF28A9632B0096428C /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		4227C2B128A963CE0096428C /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		4227C2B328A9644C0096428C /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		4227C2B528A9646A0096428C /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
@@ -79,20 +80,21 @@
 		426FE2BF28A966670032FA83 /* Urbanist-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraBold.ttf"; sourceTree = "<group>"; };
 		426FE2C028A966670032FA83 /* Urbanist-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-Medium.ttf"; sourceTree = "<group>"; };
 		426FE2C128A966670032FA83 /* Urbanist-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Urbanist-ExtraLight.ttf"; sourceTree = "<group>"; };
-		426FE2CB28A966DB0032FA83 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		426FE2CB28A966DB0032FA83 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		426FE2CD28A967470032FA83 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		426FE2CF28A967890032FA83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		426FE2D128A967990032FA83 /* ForgotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotController.swift; sourceTree = "<group>"; };
+		426FE2CF28A967890032FA83 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		426FE2D128A967990032FA83 /* ForgotPassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassVC.swift; sourceTree = "<group>"; };
 		426FE2D328A968250032FA83 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		426FE2D528A9683D0032FA83 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		426FE2D728A9685A0032FA83 /* ChangeNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNameVC.swift; sourceTree = "<group>"; };
 		426FE2D928A9686E0032FA83 /* ChangeEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailVC.swift; sourceTree = "<group>"; };
 		426FE2DB28A9688C0032FA83 /* ChangePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhotoVC.swift; sourceTree = "<group>"; };
 		426FE2DF28A968AA0032FA83 /* DeleteAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountVC.swift; sourceTree = "<group>"; };
-		426FE2E128A968BF0032FA83 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
+		426FE2E128A968BF0032FA83 /* TasksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVC.swift; sourceTree = "<group>"; };
+		42B4687328C927B8003C02AC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		42C2534A28B111FA00498886 /* AboutDevVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutDevVC.swift; path = PetProject/Controllers/AboutDevVC.swift; sourceTree = SOURCE_ROOT; };
 		42C2534C28B11A6200498886 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
-		42F0A8D328A9715400F36FBF /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		42F0A8D328A9715400F36FBF /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
 		B932CB04EDCC191FC1A23FAB /* Pods-PetProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.debug.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,10 +136,10 @@
 		4225166428C8DE76007D537F /* Auth VC */ = {
 			isa = PBXGroup;
 			children = (
-				4227C2AF28A9632B0096428C /* WelcomeController.swift */,
-				426FE2CF28A967890032FA83 /* LoginController.swift */,
-				426FE2D128A967990032FA83 /* ForgotController.swift */,
-				426FE2CB28A966DB0032FA83 /* RegisterController.swift */,
+				4227C2AF28A9632B0096428C /* WelcomeVC.swift */,
+				426FE2CF28A967890032FA83 /* LoginVC.swift */,
+				426FE2D128A967990032FA83 /* ForgotPassVC.swift */,
+				426FE2CB28A966DB0032FA83 /* RegisterVC.swift */,
 			);
 			name = "Auth VC";
 			sourceTree = "<group>";
@@ -154,8 +156,8 @@
 		4225166628C8DFA3007D537F /* Todo&TaskVC */ = {
 			isa = PBXGroup;
 			children = (
-				426FE2E128A968BF0032FA83 /* ToDoViewController.swift */,
-				42F0A8D328A9715400F36FBF /* NewTaskViewController.swift */,
+				426FE2E128A968BF0032FA83 /* TasksVC.swift */,
+				42F0A8D328A9715400F36FBF /* NewTaskVC.swift */,
 			);
 			name = "Todo&TaskVC";
 			sourceTree = "<group>";
@@ -219,7 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				42C2534C28B11A6200498886 /* LinkItem.swift */,
-				4225166028C8D6E1007D537F /* Tasks.swift */,
+				4225166028C8D6E1007D537F /* Task.swift */,
+				42B4687328C927B8003C02AC /* Users.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,32 +397,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4225166128C8D6E1007D537F /* Tasks.swift in Sources */,
+				4225166128C8D6E1007D537F /* Task.swift in Sources */,
 				4227C2C028A9651F0096428C /* ProfileViewCell.swift in Sources */,
 				42C2534B28B111FA00498886 /* AboutDevVC.swift in Sources */,
 				426FE2D428A968250032FA83 /* ProfileVC.swift in Sources */,
 				426FE2E028A968AA0032FA83 /* DeleteAccountVC.swift in Sources */,
 				4227C2B828A9647C0096428C /* CustomView.swift in Sources */,
 				426FE2D828A9685A0032FA83 /* ChangeNameVC.swift in Sources */,
-				426FE2CC28A966DB0032FA83 /* RegisterController.swift in Sources */,
+				426FE2CC28A966DB0032FA83 /* RegisterVC.swift in Sources */,
 				4227C29728A962700096428C /* AppDelegate.swift in Sources */,
 				4227C2B428A9644C0096428C /* CustomButton.swift in Sources */,
 				4227C2BE28A9650D0096428C /* ToDoCell.swift in Sources */,
 				426FE2DC28A9688C0032FA83 /* ChangePhotoVC.swift in Sources */,
 				426FE2D628A9683D0032FA83 /* ChangePasswordVC.swift in Sources */,
 				4227C2B628A9646A0096428C /* CustomImageView.swift in Sources */,
-				426FE2E228A968BF0032FA83 /* ToDoViewController.swift in Sources */,
+				426FE2E228A968BF0032FA83 /* TasksVC.swift in Sources */,
 				42C2534D28B11A6200498886 /* LinkItem.swift in Sources */,
 				4227C2BC28A964C70096428C /* DeleteAlertController.swift in Sources */,
 				42619B5E28A993C9008C3893 /* CustomTextView.swift in Sources */,
-				426FE2D028A967890032FA83 /* LoginController.swift in Sources */,
+				426FE2D028A967890032FA83 /* LoginVC.swift in Sources */,
 				426FE2DA28A9686E0032FA83 /* ChangeEmailVC.swift in Sources */,
+				42B4687428C927B8003C02AC /* Users.swift in Sources */,
 				4227C2B228A963CE0096428C /* Helper.swift in Sources */,
 				426FE2CE28A967470032FA83 /* AlertController.swift in Sources */,
-				42F0A8D428A9715400F36FBF /* NewTaskViewController.swift in Sources */,
-				4227C2B028A9632B0096428C /* WelcomeController.swift in Sources */,
+				42F0A8D428A9715400F36FBF /* NewTaskVC.swift in Sources */,
+				4227C2B028A9632B0096428C /* WelcomeVC.swift in Sources */,
 				4227C29928A962700096428C /* SceneDelegate.swift in Sources */,
-				426FE2D228A967990032FA83 /* ForgotController.swift in Sources */,
+				426FE2D228A967990032FA83 /* ForgotPassVC.swift in Sources */,
 				4227C2BA28A9649A0096428C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

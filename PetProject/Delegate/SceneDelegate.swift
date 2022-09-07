@@ -20,10 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // UserDefaults WORK
         
         if UserDefaults.standard.bool(forKey: "true")  {
-            let viewController = ToDoViewController()
+            let viewController = TasksVC()
             navController.viewControllers = [viewController]
         }else{
-            let viewController = WelcomeController()
+            let viewController = WelcomeVC()
             navController.viewControllers = [viewController]
         }
 //cus

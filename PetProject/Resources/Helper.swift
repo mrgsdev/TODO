@@ -254,7 +254,7 @@ extension UIViewController{
             self.present(alertController, animated: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 
-                self.navigationController?.viewControllers = [WelcomeController()]
+                self.navigationController?.viewControllers = [WelcomeVC()]
             }
         } 
     }

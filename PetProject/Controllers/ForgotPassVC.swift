@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseCore
 import FirebaseAuth
-class ForgotController: UIViewController {
+class ForgotPassVC: UIViewController {
     // MARK: - Create UI with Code
     private let mainLabel: UILabel = {
         let label = UILabel()
@@ -73,7 +73,7 @@ class ForgotController: UIViewController {
 }
 
 // MARK: - extension ForgotController
-extension ForgotController{
+extension ForgotPassVC{
     @objc private func forgotPasswordPress(){
         // Validate the input
         guard let email = emailTextField.text, email != "" else {

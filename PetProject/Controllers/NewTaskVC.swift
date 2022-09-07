@@ -10,15 +10,15 @@ import FirebaseDatabase
 import FirebaseAuth
 import FirebaseCore
 protocol NewTaskDelegate: AnyObject {
-    func updateEdit(Tasks: Tasks)
+    func updateEdit(Tasks: Task)
 }
 
-class NewTaskViewController: UIViewController {
+class NewTaskVC: UIViewController {
     private var databaseRef = Database.database().reference()
     
     weak var delegate:ToDoViewControllerDelegate?
     weak var delegate2: NewTaskDelegate?
-    var todoModel:Tasks?
+    var todoModel:Task?
     private let scrollView = UIScrollView()
     private let contentView = UIView()
      let textFieldTask: CustomTextField = {
@@ -90,7 +90,7 @@ class NewTaskViewController: UIViewController {
     
     
 }
-extension NewTaskViewController{
+extension NewTaskVC{
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         //        if velocity.y > 0,
         //           arrayTodo.count != 0
@@ -130,8 +130,7 @@ extension NewTaskViewController{
             navigationController?.popViewController(animated: true)
         }else{
             let user = Auth.auth().currentUser
-            self.databaseRef.child("users").child(user!.uid).child("tasklist").child(textField.lowercased()).setValue(["textPrimary":textField,
-                "textSecondary":textView])
+            self.databaseRef.child("users").child(user!.uid).child("tasks").child(textField.lowercased()).setValue(["title":textField, "description":textView])
             
 //          delegate?.update(taskPrimary: textField,taskSecondary: textView)
             navigationController?.popViewController(animated: true)

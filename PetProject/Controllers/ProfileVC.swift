@@ -165,7 +165,7 @@ extension ProfileVC{
     @objc private func logout(){
         print(#function)
         Vibration.light.vibrate()
-        navigationController?.viewControllers = [WelcomeController()]
+        navigationController?.viewControllers = [WelcomeVC()]
         //navigationController?.popToRootViewController(animated: true)
         signOut()
     }

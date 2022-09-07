@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
-class LoginController: UIViewController {
+class LoginVC: UIViewController {
     
     private var clickOnEye = true
     private let isSecureImage = UIImageView()
@@ -137,7 +137,7 @@ class LoginController: UIViewController {
 
 //MARK: - extension LoginController
 
-extension LoginController{
+extension LoginVC{
     @objc private func loginButtonPressed(){
         Vibration.light.vibrate()
         // Validate the input
@@ -186,7 +186,7 @@ extension LoginController{
             self.view.endEditing(true)
             Vibration.success.vibrate()
             // Present the main view
-            let navVc = ToDoViewController()
+            let navVc = TasksVC()
             UserDefaults.standard.set(true, forKey: "true")
             self.navigationController?.pushViewController(navVc, animated: true)
             
@@ -211,7 +211,7 @@ extension LoginController{
         }
     }
     @objc private func forgotPasswordPress(){
-        let navVc = ForgotController()
+        let navVc = ForgotPassVC()
         Vibration.light.vibrate()
         navigationController?.pushViewController(navVc, animated: true)
     }
@@ -247,7 +247,7 @@ extension LoginController{
                 }
                 
                 // Present the main view
-                let navVc = ToDoViewController()
+                let navVc = TasksVC()
                 UserDefaults.standard.set(true, forKey: "true")
                 Vibration.success.vibrate()
                 self.navigationController?.pushViewController(navVc, animated: true)
@@ -312,7 +312,7 @@ extension LoginController{
         ])
     }
 }
-extension LoginController:UITextFieldDelegate{
+extension LoginVC:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
               if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {

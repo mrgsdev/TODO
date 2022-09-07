@@ -96,7 +96,7 @@ class DeleteAlertController: UIViewController {
 
 extension DeleteAlertController {
     @objc private func goToWVC(){
-        self.navigationController?.viewControllers = [WelcomeController()]
+        self.navigationController?.viewControllers = [WelcomeVC()]
     }
     private func addSubviewElement()  {
         view.addSubview(stackView)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomeController: UIViewController {
+class WelcomeVC: UIViewController {
     
     //MARK: Create UI with Code
     private let backgroundImage: UIImageView = {
@@ -59,17 +59,17 @@ class WelcomeController: UIViewController {
     }
     
 }
-extension WelcomeController{
+extension WelcomeVC{
     
     @objc private func loginButtonPressed(){
         Vibration.light.vibrate()
-        let navVC = LoginController()
+        let navVC = LoginVC()
         navigationController?.pushViewController(navVC, animated: true)
     }
     
     @objc private func registerButtonPressed(){
         Vibration.light.vibrate()
-        let navVC = RegisterController()
+        let navVC = RegisterVC()
         navigationController?.pushViewController(navVC, animated: true)
     }
     

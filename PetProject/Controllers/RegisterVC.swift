@@ -10,9 +10,10 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseDatabase
 import GoogleSignIn
-class RegisterController: UIViewController {
-    private var databaseRef = Database.database().reference()
+class RegisterVC: UIViewController {
+    private var databaseRef = Database.database().reference(withPath: "users")
     // MARK: - Create UI with Code
+ 
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let registerLabel: UILabel = {
@@ -142,7 +143,7 @@ class RegisterController: UIViewController {
     }
 }
 
-extension RegisterController{
+extension RegisterVC{
     @objc private func googleAuthPressed(){
         Vibration.light.vibrate()
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
@@ -184,7 +185,7 @@ extension RegisterController{
                 }
                 
                 // Present the main view
-                let navVc = ToDoViewController()
+                let navVc = TasksVC()
                 Vibration.success.vibrate()
                 UserDefaults.standard.set(true, forKey: "true")
                 self.navigationController?.pushViewController(navVc, animated: true)
@@ -225,7 +226,7 @@ extension RegisterController{
         }
         
         // Register the user account on Firebase
-        Auth.auth().createUser(withEmail: emailAddress, password: password, completion: { [weak self] (user, error) in
+       Auth.auth().createUser(withEmail: emailAddress, password: password, completion: { [weak self] (user, error) in
             
             if let error = error {
                 Vibration.error.vibrate()
@@ -236,11 +237,9 @@ extension RegisterController{
                 alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 self?.present(alertController, animated: true)
                 return
-            }
-            
-            self?.databaseRef.child((user?.user.uid)!).child("username").setValue(name)
-            self?.databaseRef.child((user?.user.uid)!).child("useremail").setValue(emailAddress)
-            
+            } 
+           self?.databaseRef.child((user?.user.uid)!).setValue(["username":name,"email":emailAddress])
+       
             // Save the name of the user
             if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
                 changeRequest.displayName = name
@@ -340,7 +339,7 @@ extension RegisterController{
     }
 }
 
-extension RegisterController:UIScrollViewDelegate{
+extension RegisterVC:UIScrollViewDelegate{
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0) {
             //            self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -352,7 +351,7 @@ extension RegisterController:UIScrollViewDelegate{
         }
     }
 }
-extension RegisterController:UITextFieldDelegate{
+extension RegisterVC:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
