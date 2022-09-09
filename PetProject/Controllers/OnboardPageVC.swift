@@ -168,6 +168,7 @@ extension OnboardPageVC {
 
     @objc func skipTapped(_ sender: UIButton) {
         let vc = WelcomeVC()
+        UserDefaults.standard.set(true, forKey: "onboard")
         navigationController?.viewControllers = [vc]
     }
     
@@ -175,7 +176,10 @@ extension OnboardPageVC {
         pageControl.currentPage += 1
         print(pageControl.currentPage)
         goToNextPage(animated: true)
-        self.pageControl.currentPage == 3 ?  navigationController?.viewControllers = [vc] : nil
+        if pageControl.currentPage == 3 {
+            UserDefaults.standard.set(true, forKey: "onboard")
+            self.navigationController?.viewControllers = [vc]
+        }
     }
 }
 

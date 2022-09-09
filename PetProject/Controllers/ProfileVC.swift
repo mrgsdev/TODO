@@ -174,6 +174,7 @@ extension ProfileVC{
             try Auth.auth().signOut()
             GIDSignIn.sharedInstance.signOut()
             UserDefaults.standard.removeObject(forKey: "true")
+            UserDefaults.standard.removeObject(forKey: "onboard")
             // Sign out from Google
         } catch {
             let alertController = UIAlertController(title: "Logout Error", message: error.localizedDescription, preferredStyle: .alert)
