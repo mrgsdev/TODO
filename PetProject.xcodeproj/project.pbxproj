@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2ECF6810B5B9B4B3BD58D6C3 /* Pods_PetProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */; };
+		4202AE6E28CB3D8300990057 /* OnboardPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4202AE6D28CB3D8300990057 /* OnboardPageVC.swift */; };
+		4202AE7028CB3DD000990057 /* SettingPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4202AE6F28CB3DD000990057 /* SettingPageVC.swift */; };
 		4225166128C8D6E1007D537F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4225166028C8D6E1007D537F /* Task.swift */; };
 		4227C29728A962700096428C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29628A962700096428C /* AppDelegate.swift */; };
 		4227C29928A962700096428C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227C29828A962700096428C /* SceneDelegate.swift */; };
@@ -53,6 +55,8 @@
 /* Begin PBXFileReference section */
 		3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.release.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.release.xcconfig"; sourceTree = "<group>"; };
 		3E2FE32B4BD4B3D27905B422 /* Pods_PetProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4202AE6D28CB3D8300990057 /* OnboardPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPageVC.swift; sourceTree = "<group>"; };
+		4202AE6F28CB3DD000990057 /* SettingPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageVC.swift; sourceTree = "<group>"; };
 		4225166028C8D6E1007D537F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		4227C29328A962700096428C /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4227C29628A962700096428C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 				3D202F17AA2BD121C1AD0B28 /* Pods-PetProject.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		4202AE6C28CB3D6000990057 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				4202AE6D28CB3D8300990057 /* OnboardPageVC.swift */,
+				4202AE6F28CB3DD000990057 /* SettingPageVC.swift */,
+			);
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
 		4225166228C8DD84007D537F /* Profile&Settings Controllers */ = {
@@ -195,6 +208,7 @@
 		4227C2AB28A963090096428C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4202AE6C28CB3D6000990057 /* Onboarding */,
 				4225166428C8DE76007D537F /* Auth VC */,
 				4225166228C8DD84007D537F /* Profile&Settings Controllers */,
 				4225166628C8DFA3007D537F /* Todo&TaskVC */,
@@ -411,6 +425,7 @@
 				426FE2DC28A9688C0032FA83 /* ChangePhotoVC.swift in Sources */,
 				426FE2D628A9683D0032FA83 /* ChangePasswordVC.swift in Sources */,
 				4227C2B628A9646A0096428C /* CustomImageView.swift in Sources */,
+				4202AE7028CB3DD000990057 /* SettingPageVC.swift in Sources */,
 				426FE2E228A968BF0032FA83 /* TasksVC.swift in Sources */,
 				42C2534D28B11A6200498886 /* LinkItem.swift in Sources */,
 				4227C2BC28A964C70096428C /* DeleteAlertController.swift in Sources */,
@@ -420,6 +435,7 @@
 				42B4687428C927B8003C02AC /* Users.swift in Sources */,
 				4227C2B228A963CE0096428C /* Helper.swift in Sources */,
 				426FE2CE28A967470032FA83 /* AlertController.swift in Sources */,
+				4202AE6E28CB3D8300990057 /* OnboardPageVC.swift in Sources */,
 				42F0A8D428A9715400F36FBF /* NewTaskVC.swift in Sources */,
 				4227C2B028A9632B0096428C /* WelcomeVC.swift in Sources */,
 				4227C29928A962700096428C /* SceneDelegate.swift in Sources */,

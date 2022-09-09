@@ -13,25 +13,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//        let window = UIWindow(windowScene: windowScene)
+//        let navController = UINavigationController()
+//
+//        // UserDefaults WORK
+//
+//        if UserDefaults.standard.bool(forKey: "true")  {
+//            let viewController = TasksVC()
+//            navController.viewControllers = [viewController]
+//        }else{
+//            let viewController = WelcomeVC()
+//            navController.viewControllers = [viewController]
+//        }
+////cus
+//
+////
+////        let viewController = ProfileController()
+////        navController.viewControllers = [viewController]
+//        self.window = window
+//        window.rootViewController = navController
+//        window.makeKeyAndVisible()
+        
+        // with NAVIGATIONVC
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         let navController = UINavigationController()
-        
-        // UserDefaults WORK
-        
-        if UserDefaults.standard.bool(forKey: "true")  {
-            let viewController = TasksVC()
-            navController.viewControllers = [viewController]
-        }else{
-            let viewController = WelcomeVC()
-            navController.viewControllers = [viewController]
-        }
-//cus
-        
-//
-//        let viewController = ProfileController()
-//        navController.viewControllers = [viewController]
+        let viewController = OnboardPageVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        window.backgroundColor = .systemBackground
         self.window = window
+        navController.viewControllers = [viewController]
         window.rootViewController = navController
         window.makeKeyAndVisible()
     }

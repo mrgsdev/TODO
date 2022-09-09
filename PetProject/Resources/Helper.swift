@@ -42,6 +42,10 @@ extension UIColor{
         static let labelSecondary = UIColor(named: "Label.Secondary")
         static let labelTertiary = UIColor(named: "Label.Tertiary")
     }
+    final class PageControl{
+        static let pageActive = UIColor(named: "Page.Active")
+        static let pageBackground = UIColor(named: "Page.Background") 
+    }
     final class TextField{
         // Label.Secondary = TextField.Label.Placeholder
         static let label = UIColor(named: "TextField.Label.Placeholder")
@@ -72,7 +76,10 @@ enum imageSet:String{
     case personFill = "person.fill"
     case backButton = "chevron.backward"
     case checkmark = "checkmark"
-    case sadface = "sadface"
+    case sadface = "sadFace"
+    case moneyface = "moneyFace"
+    case smileface = "smileFace"
+    case thinkingFace = "thinkingFace"
 }
 
 //MARK: - UIFont extension
