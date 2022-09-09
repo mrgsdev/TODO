@@ -131,8 +131,7 @@ extension OnboardPageVC: UIPageViewControllerDataSource {
 
         if currentIndex < pages.count - 1 {
             return pages[currentIndex + 1]  // go next
-        } else {
-            nextButton.setTitle("Next", for: .normal)
+        } else { 
             return  nil
         }
          

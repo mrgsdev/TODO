@@ -49,6 +49,7 @@
 		42B4687428C927B8003C02AC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4687328C927B8003C02AC /* Users.swift */; };
 		42C2534B28B111FA00498886 /* AboutDevVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534A28B111FA00498886 /* AboutDevVC.swift */; };
 		42C2534D28B11A6200498886 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534C28B11A6200498886 /* LinkItem.swift */; };
+		42E5C03228CB791B00A54B8B /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E5C03128CB791B00A54B8B /* LaunchVC.swift */; };
 		42F0A8D428A9715400F36FBF /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F0A8D328A9715400F36FBF /* NewTaskVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		42B4687328C927B8003C02AC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		42C2534A28B111FA00498886 /* AboutDevVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutDevVC.swift; path = PetProject/Controllers/AboutDevVC.swift; sourceTree = SOURCE_ROOT; };
 		42C2534C28B11A6200498886 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
+		42E5C03128CB791B00A54B8B /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
 		42F0A8D328A9715400F36FBF /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
 		B932CB04EDCC191FC1A23FAB /* Pods-PetProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject.debug.xcconfig"; path = "Target Support Files/Pods-PetProject/Pods-PetProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +210,7 @@
 		4227C2AB28A963090096428C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				42E5C03128CB791B00A54B8B /* LaunchVC.swift */,
 				4202AE6C28CB3D6000990057 /* Onboarding */,
 				4225166428C8DE76007D537F /* Auth VC */,
 				4225166228C8DD84007D537F /* Profile&Settings Controllers */,
@@ -420,6 +423,7 @@
 				426FE2D828A9685A0032FA83 /* ChangeNameVC.swift in Sources */,
 				426FE2CC28A966DB0032FA83 /* RegisterVC.swift in Sources */,
 				4227C29728A962700096428C /* AppDelegate.swift in Sources */,
+				42E5C03228CB791B00A54B8B /* LaunchVC.swift in Sources */,
 				4227C2B428A9644C0096428C /* CustomButton.swift in Sources */,
 				4227C2BE28A9650D0096428C /* ToDoCell.swift in Sources */,
 				426FE2DC28A9688C0032FA83 /* ChangePhotoVC.swift in Sources */,

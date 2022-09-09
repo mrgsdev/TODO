@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let navController = UINavigationController()
         //
-        //        // UserDefaults WORK
+        // UserDefaults WORK
         let userTrue = UserDefaults.standard.bool(forKey: "true")
         let userOnboard = UserDefaults.standard.bool(forKey: "onboard")
         if userTrue {
@@ -34,8 +34,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ////cus
         //
         ////
-        ////        let viewController = ProfileController()
-        ////        navController.viewControllers = [viewController]
+//                let viewController = LaunchVC()
+//                navController.viewControllers = [viewController]
         //        self.window = window
         //        window.rootViewController = navController
         //        window.makeKeyAndVisible()
