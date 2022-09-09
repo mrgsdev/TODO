@@ -47,6 +47,16 @@ class TasksVC: UIViewController{
         }
         
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let task = arrayTodo[indexPath.row]
+            task.ref?.removeValue()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function)
@@ -124,6 +134,8 @@ extension TasksVC:UITableViewDataSource,UITableViewDelegate,NewTaskDelegate{
                 print(index)
                 let indexPath = IndexPath(row: index, section: 0)
                 arrayTodo[indexPath.row] = Tasks
+                let task = arrayTodo[indexPath.row]
+                task.ref?.updateChildValues(["title":  arrayTodo[indexPath.row].title,"description":  arrayTodo[indexPath.row].description])
                 tableView.reloadData()
             }
         }

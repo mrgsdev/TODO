@@ -15,8 +15,8 @@ class Task:Hashable{
     func hash(into hasher: inout Hasher) {
         hasher.combine(title)
     }
-    let title:String
-    let description:String
+    var title:String
+    var description:String
     var ref:DatabaseReference?
 //    var completed = false
     

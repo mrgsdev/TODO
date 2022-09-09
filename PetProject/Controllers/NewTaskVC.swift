@@ -121,16 +121,18 @@ extension NewTaskVC{
             return
         }
         if title == "Change task"{
-//            if let todoModel = todoModel {
-//                todoModel.taskPrimary = textField
-//                todoModel.taskSecondary = textView
-//                delegate2?.updateEdit(TodoModel: todoModel)
-//            }
+            
+            if let todoModel = todoModel {
+                todoModel.title = textField
+                todoModel.description = textView
+                delegate2?.updateEdit(Tasks: todoModel)
+                let user = Auth.auth().currentUser
+            }
             print(textField)
             navigationController?.popViewController(animated: true)
         }else{
             let user = Auth.auth().currentUser
-            self.databaseRef.child("users").child(user!.uid).child("tasks").child(textField.lowercased()).setValue(["title":textField, "description":textView])
+            self.databaseRef.child("users").child(user!.uid).child("tasks").childByAutoId().setValue(["title":textField, "description":textView])
             
 //          delegate?.update(taskPrimary: textField,taskSecondary: textView)
             navigationController?.popViewController(animated: true)
