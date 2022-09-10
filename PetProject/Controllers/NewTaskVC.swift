@@ -30,7 +30,7 @@ class NewTaskVC: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.sizeToFit()
-        label.text = "Create new task"
+        label.text = "Create title"
         label.font = UIFont(name: UIFont.urbanistExtraLight, size: 20)
         label.textColor = UIColor.Label.labelSecondary
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +40,7 @@ class NewTaskVC: UIViewController {
     private let labelSecondary: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "Create new task"
+        label.text = "Create description"
         label.sizeToFit()
         label.textColor = UIColor.Label.labelSecondary
         label.font = UIFont(name: UIFont.urbanistExtraLight, size: 20)

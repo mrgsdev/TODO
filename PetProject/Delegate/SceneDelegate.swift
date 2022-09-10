@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         let navController = UINavigationController()
-        //
+        
         // UserDefaults WORK
         let userTrue = UserDefaults.standard.bool(forKey: "true")
         let userOnboard = UserDefaults.standard.bool(forKey: "onboard")
@@ -31,20 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let viewController = WelcomeVC()
             navController.viewControllers = [viewController]
         }
-        ////cus
-        //
-        ////
-//                let viewController = LaunchVC()
-//                navController.viewControllers = [viewController]
-        //        self.window = window
-        //        window.rootViewController = navController
-        //        window.makeKeyAndVisible()
-        //        if UserDefaults.standard.bool(forKey: "onboard"){
-        //            let viewController = LoginVC()
-        //            navController.viewControllers = [viewController]
-        //        }
-        // with NAVIGATIONVC
-        //        let viewController = OnboardPageVC(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+//                let viewController = LaunchVC() 
         window.backgroundColor = .systemBackground
         self.window = window
         //        navController.viewControllers = [viewController]

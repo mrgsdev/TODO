@@ -46,6 +46,7 @@ extension UIColor{
         static let pageActive = UIColor(named: "Page.Active")
         static let pageBackground = UIColor(named: "Page.Background") 
     }
+    
     final class TextField{
         // Label.Secondary = TextField.Label.Placeholder
         static let label = UIColor(named: "TextField.Label.Placeholder")
