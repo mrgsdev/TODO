@@ -102,6 +102,7 @@ extension TasksVC:ToDoViewControllerDelegate{
     @objc private func addNewNoteButtonPressed(){
         Vibration.light.vibrate()
         let loadVC = NewTaskVC()
+        loadVC.title = "New task"
         loadVC.delegate = self
         navigationController?.pushViewController(loadVC, animated: true)
     }

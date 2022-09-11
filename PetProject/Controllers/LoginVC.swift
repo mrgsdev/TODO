@@ -250,6 +250,7 @@ extension LoginVC{
                 // Present the main view
                 let navVc = TasksVC()
                 UserDefaults.standard.set(true, forKey: "true")
+                UserDefaults.standard.removeObject(forKey: "onboard")
                 Vibration.success.vibrate()
                 self.navigationController?.pushViewController(navVc, animated: true)
             }
