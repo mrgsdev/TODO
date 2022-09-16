@@ -238,8 +238,9 @@ extension RegisterVC{
                 self?.present(alertController, animated: true)
                 return
             } 
-           self?.databaseRef.child((user?.user.uid)!).setValue(["username":name,"email":emailAddress])
-       
+//         self?.databaseRef.child((user?.user.uid)!).setValue(["username":name,"email":emailAddress])
+           /// replacement for the upper code
+           DatabaseManager.shared.insertUser(with: Users(username: name, email: emailAddress))
             // Save the name of the user
             if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
                 changeRequest.displayName = name
