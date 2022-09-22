@@ -18,7 +18,7 @@ class TasksVC: UIViewController{
     
     private let heightCell:CGFloat = 80
     var handle: AuthStateDidChangeListenerHandle?
-    private let tableView: UITableView = {
+    let tableView: UITableView = {
         let table = UITableView()
         table.register(ToDoCell.self, forCellReuseIdentifier: "todoCell")
         table.separatorStyle = .none
@@ -41,11 +41,12 @@ class TasksVC: UIViewController{
             for item in snapshot.children{
                 let task = Task(snapshot: item as! DataSnapshot)
                 junkArray.append(task)
+
             }
             self?.arrayTodo = junkArray
             self?.tableView.reloadData()
         }
-        
+
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -67,7 +68,10 @@ class TasksVC: UIViewController{
         navItemSetupButton()
         makeConstraints()
         loadDataFirebase()
-    }
+        /// Databasemanager
+//        DatabaseManager.shared.test(arrayTODO: arrayTodo)
+        print(arrayTodo.count)
+    } 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // load data in first VC
