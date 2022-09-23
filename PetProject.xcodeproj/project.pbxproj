@@ -47,6 +47,7 @@
 		426FE2DC28A9688C0032FA83 /* ChangePhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2DB28A9688C0032FA83 /* ChangePhotoVC.swift */; };
 		426FE2E028A968AA0032FA83 /* DeleteAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2DF28A968AA0032FA83 /* DeleteAccountVC.swift */; };
 		426FE2E228A968BF0032FA83 /* TasksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426FE2E128A968BF0032FA83 /* TasksVC.swift */; };
+		429BF97028DDE32A0022CEF2 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429BF96F28DDE32A0022CEF2 /* Progress.swift */; };
 		42B4687428C927B8003C02AC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4687328C927B8003C02AC /* Users.swift */; };
 		42C2534B28B111FA00498886 /* AboutDevVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534A28B111FA00498886 /* AboutDevVC.swift */; };
 		42C2534D28B11A6200498886 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534C28B11A6200498886 /* LinkItem.swift */; };
@@ -98,6 +99,7 @@
 		426FE2DB28A9688C0032FA83 /* ChangePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhotoVC.swift; sourceTree = "<group>"; };
 		426FE2DF28A968AA0032FA83 /* DeleteAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountVC.swift; sourceTree = "<group>"; };
 		426FE2E128A968BF0032FA83 /* TasksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVC.swift; sourceTree = "<group>"; };
+		429BF96F28DDE32A0022CEF2 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		42B4687328C927B8003C02AC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		42C2534A28B111FA00498886 /* AboutDevVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutDevVC.swift; path = PetProject/Controllers/AboutDevVC.swift; sourceTree = SOURCE_ROOT; };
 		42C2534C28B11A6200498886 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				4227C2AD28A963130096428C /* Models */,
 				4227C2AC28A9630F0096428C /* Views */,
 				4227C2AB28A963090096428C /* Controllers */,
+				429BF96F28DDE32A0022CEF2 /* Progress.swift */,
 			);
 			path = PetProject;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				42C2534B28B111FA00498886 /* AboutDevVC.swift in Sources */,
 				426FE2D428A968250032FA83 /* ProfileVC.swift in Sources */,
 				426FE2E028A968AA0032FA83 /* DeleteAccountVC.swift in Sources */,
+				429BF97028DDE32A0022CEF2 /* Progress.swift in Sources */,
 				4227C2B828A9647C0096428C /* CustomView.swift in Sources */,
 				426FE2D828A9685A0032FA83 /* ChangeNameVC.swift in Sources */,
 				426FE2CC28A966DB0032FA83 /* RegisterVC.swift in Sources */,

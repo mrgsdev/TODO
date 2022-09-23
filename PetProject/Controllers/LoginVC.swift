@@ -141,7 +141,7 @@ class LoginVC: UIViewController {
 extension LoginVC{
     @objc private func loginButtonPressed(){ // gipala5733@edxplus.com
         Vibration.light.vibrate()
-
+        
         // Validate the input
         guard let emailAddress = self.emailTextField.text, emailAddress != "",
               let password = self.passwordTextField.text, password != "" else {
@@ -154,49 +154,63 @@ extension LoginVC{
             
             return
         }
-        spinner.show(in: view)
-        spinner.dismiss(afterDelay: 3.0, animated: true) {
-           
-            // Perform login by calling Firebase APIs
-            Auth.auth().signIn(withEmail: emailAddress, password: password, completion: { (result, error) in
-                
-                if let error = error {
-                    Vibration.error.vibrate()
-                    let alertController = AlertController()
-                    alertController.customAlert(text: "Login Error", destText: error.localizedDescription, isHiddenActionButton: true)
-                    alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                    alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                    self.present(alertController, animated: true)
-                    return
-                }
+        
+        
+        
+        // Perform login by calling Firebase APIs
+        Auth.auth().signIn(withEmail: emailAddress, password: password, completion: { (result, error) in
+            
+            if let error = error {
+                Vibration.error.vibrate()
+                let alertController = AlertController()
+                alertController.customAlert(text: "Login Error", destText: error.localizedDescription, isHiddenActionButton: true)
+                alertController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                self.present(alertController, animated: true)
+                return
+            }
+            self.spinner.textLabel.text = "Waiting..."
+            DispatchQueue.main.async {
+                self.spinner.show(in: self.view, animated: true)
+            }
+            self.spinner.style = .dark
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                self.spinner.indicatorView = JGProgressHUDSuccessIndicatorView()
+                self.spinner.textLabel.text = "Success"
+            }
+            
+            self.spinner.dismiss(afterDelay: 4, animated: false) {
                 
                 // Email verification
-                guard let result = result, result.user.isEmailVerified else {
-                    Vibration.error.vibrate()
-                    let alertController = AlertController()
-                    alertController.textButton = "Send Email"
-                    alertController.actionButton.setTitle(alertController.textButton, for: .normal)
-                    alertController.customAlert(text: "Login Error",
-                                                destText:"You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.",
-                                                isHiddenActionButton: false)
-                    alertController.modalPresentationStyle = .overCurrentContext
-                    alertController.modalTransitionStyle = .crossDissolve
-                    self.present(alertController, animated: true)
-                    return
-                }
+//                guard let result = result, result.user.isEmailVerified else {
+//                    Vibration.error.vibrate()
+//                    let alertController = AlertController()
+//                    alertController.textButton = "Send Email"
+//                    alertController.actionButton.setTitle(alertController.textButton, for: .normal)
+//                    alertController.customAlert(text: "Login Error",
+//                                                destText:"You haven't confirmed your email address yet. We sent you a confirmation email when you sign up. Please click the verification link in that email. If you need us to send the confirmation email again, please tap Resend Email.",
+//                                                isHiddenActionButton: false)
+//                    alertController.modalPresentationStyle = .overCurrentContext
+//                    alertController.modalTransitionStyle = .crossDissolve
+//                    self.present(alertController, animated: true)
+//                    return
+//                }
                 
-                
-                // Dismiss keyboard
-                self.view.endEditing(true)
-                Vibration.success.vibrate()
-                // Present the main view
-                let navVc = TasksVC()
-                UserDefaults.standard.set(true, forKey: "true")
-                UserDefaults.standard.removeObject(forKey: "onboard")
-                self.navigationController?.pushViewController(navVc, animated: true)
-                
-            })
-        }
+//                // Dismiss keyboard
+//                self.view.endEditing(true)
+//                Vibration.success.vibrate()
+//                // Present the main view
+//                let navVc = TasksVC()
+//                UserDefaults.standard.set(true, forKey: "true")
+//                UserDefaults.standard.removeObject(forKey: "onboard")
+//                self.navigationController?.pushViewController(navVc, animated: true)
+            }
+            
+            
+            
+            
+        })
         
     }
     @objc private func popViewButtonPressed(){
@@ -322,13 +336,13 @@ extension LoginVC{
 extension LoginVC:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
-              if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-                 nextField.becomeFirstResponder()
-              } else {
-                 // Not found, so remove keyboard.
-                 textField.resignFirstResponder()
-              }
-              // Do not add a line break
-              return false
+        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+            nextField.becomeFirstResponder()
+        } else {
+            // Not found, so remove keyboard.
+            textField.resignFirstResponder()
+        }
+        // Do not add a line break
+        return false
     }
 } 

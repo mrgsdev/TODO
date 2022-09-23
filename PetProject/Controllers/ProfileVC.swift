@@ -165,24 +165,35 @@ extension ProfileVC{
     @objc private func logout(){
         print(#function)
         Vibration.light.vibrate()
-        navigationController?.viewControllers = [WelcomeVC()]
         //navigationController?.popToRootViewController(animated: true)
         signOut()
     }
     private func signOut()  {
-        do {
-            try Auth.auth().signOut()
-            GIDSignIn.sharedInstance.signOut()
-            UserDefaults.standard.removeObject(forKey: "true")
-            UserDefaults.standard.removeObject(forKey: "onboard")
-            // Sign out from Google
-        } catch {
-            let alertController = UIAlertController(title: "Logout Error", message: error.localizedDescription, preferredStyle: .alert)
-            let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okayAction)
-            present(alertController, animated: true, completion: nil)
-            return
+        let alert = UIAlertController(title: String(localized: "Do you really want to get out?"), message: nil, preferredStyle: .alert)
+        
+        let logout = UIAlertAction(title: "Log Out", style: .default) { _ in
+            do {
+                try Auth.auth().signOut()
+                GIDSignIn.sharedInstance.signOut()
+                UserDefaults.standard.removeObject(forKey: "true")
+                UserDefaults.standard.removeObject(forKey: "onboard")
+                self.navigationController?.viewControllers = [WelcomeVC()]
+                // Sign out from Google
+            } catch {
+                let alertController = UIAlertController(title: "Logout Error", message: error.localizedDescription, preferredStyle: .alert)
+                let okayAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okayAction)
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
         }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(logout)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+   
+       
     }
     private func addSubviewElement()  {
         contentView.addSubview(tableView)
