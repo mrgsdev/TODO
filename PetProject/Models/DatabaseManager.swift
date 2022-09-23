@@ -11,6 +11,7 @@ import FirebaseAuth
 final class DatabaseManager{
     static let shared = DatabaseManager()
     private let database = Database.database().reference()
+    
     public func insertUser(with user: Users){
         let userAuth = Auth.auth().currentUser
         database.child("users").child(userAuth!.uid).setValue([
@@ -32,6 +33,14 @@ final class DatabaseManager{
             }
             print(junkArray.count) 
         }
+    }
+    
+    public func remove(parentA: String) {
+        
+        database.child("users").child(parentA).removeValue { error, _ in
+            print(error)
+        }
+ 
     }
   
 }

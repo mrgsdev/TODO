@@ -25,7 +25,7 @@ class DeleteAccountVC: UIViewController {
         let label = UILabel()
         label.attributedText = NSMutableAttributedString()
             .normal(String(localized:"You will irretrievably lose all your data, including notes.To delete an account, enter:\n"))
-            .boldUnderlined(String(localized:"Delete an account"))
+            .boldUnderlined(String(localized:"Password your account"))
         label.textColor = UIColor.Label.labelSecondary
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
@@ -35,7 +35,7 @@ class DeleteAccountVC: UIViewController {
     
     private let deleteTextField: CustomTextField = {
         let textField = CustomTextField()
-        textField.customPlaceholder(placeholder: "Enter 'Delete an account'")
+        textField.customPlaceholder(placeholder: "Example: 123456'")
         return textField
     }()
     
@@ -118,6 +118,7 @@ extension DeleteAccountVC{
                 print("DEL=\(String(describing: user?.email))=")
             } else {
                 user?.delete { error in
+               
                     if let error = error {
                         let alertController = AlertController()
                         alertController.customAlert(text: "Delete Error", destText: error.localizedDescription, isHiddenActionButton: true)
@@ -125,6 +126,7 @@ extension DeleteAccountVC{
                         alertController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                         self.present(alertController, animated: true)
                     } else {
+                        DatabaseManager.shared.remove(parentA: user!.uid)
                         self.signOut()
                         self.navigationController?.viewControllers = [DeleteAlertController()]
                         
