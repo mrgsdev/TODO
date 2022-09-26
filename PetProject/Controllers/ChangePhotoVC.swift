@@ -7,7 +7,8 @@
 
 
 import UIKit
-
+import FirebaseAuth
+import FirebaseStorage
 class ChangePhotoVC: UIViewController {
     
     //MARK: Create UI with Code
@@ -65,9 +66,15 @@ class ChangePhotoVC: UIViewController {
         
         // imageView @IBACtion
         
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-//          imageProfile.isUserInteractionEnabled = true
-//          imageProfile.addGestureRecognizer(tapGestureRecognizer)
+        //        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+        //                                                          action: #selector(didTapChangeProfilePic))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic))
+        imageProfile.isUserInteractionEnabled = true
+        imageProfile.addGestureRecognizer(tapGestureRecognizer)
+    }
+    @objc private func didTapChangeProfilePic() {
+        print(#function)
+        presentPhotoActionSheet()
     }
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -80,6 +87,7 @@ class ChangePhotoVC: UIViewController {
         tappedImage.contentMode = .scaleAspectFit
     }
     
+    
 }
 
 
@@ -91,6 +99,22 @@ extension ChangePhotoVC{
     
     @objc private func changePhotoButtonPressed(){
         print(#function)
+        // upload photo
+        guard let image = self.imageProfile.image,
+              let data = image.pngData() else {
+            return
+        }
+        let user = Auth.auth().currentUser
+        let fileName = Users(username: (user?.displayName)!, email: (user?.email)!)
+        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName.profilePictureFileName) { result in
+            switch result {
+            case .success(let downloadURL):
+                UserDefaults.standard.set(downloadURL, forKey: "profile_picture_url")
+                print(downloadURL)
+            case .failure(let error):
+                print("Storage maanger error: \(error)")
+            }
+        }
     }
     func navItemSetupButton() {
         navigationItem.setHidesBackButton(true, animated: true)
@@ -113,3 +137,60 @@ extension ChangePhotoVC{
         ])
     }
 }
+extension ChangePhotoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: "Profile Picture",
+                                            message: "How would you like to select a picture?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentCamera()
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Chose Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentPhotoPicker()
+            
+        }))
+        
+        present(actionSheet, animated: true)
+    }
+    
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        
+        self.imageProfile.image = selectedImage
+        
+    }
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+

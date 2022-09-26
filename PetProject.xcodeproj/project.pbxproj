@@ -56,6 +56,7 @@
 		427748BD28DF042C005EEDC1 /* BarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427748BC28DF042C005EEDC1 /* BarButtonItem+Extension.swift */; };
 		429BF97028DDE32A0022CEF2 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429BF96F28DDE32A0022CEF2 /* Progress.swift */; };
 		42B4687428C927B8003C02AC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4687328C927B8003C02AC /* Users.swift */; };
+		42BB331228E2346F0035329F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB331128E2346F0035329F /* StorageManager.swift */; };
 		42C2534B28B111FA00498886 /* AboutDevVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534A28B111FA00498886 /* AboutDevVC.swift */; };
 		42C2534D28B11A6200498886 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534C28B11A6200498886 /* LinkItem.swift */; };
 		42E5C03228CB791B00A54B8B /* LaunchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E5C03128CB791B00A54B8B /* LaunchVC.swift */; };
@@ -115,6 +116,7 @@
 		427748BC28DF042C005EEDC1 /* BarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		429BF96F28DDE32A0022CEF2 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		42B4687328C927B8003C02AC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		42BB331128E2346F0035329F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		42C2534A28B111FA00498886 /* AboutDevVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutDevVC.swift; path = PetProject/Controllers/AboutDevVC.swift; sourceTree = SOURCE_ROOT; };
 		42C2534C28B11A6200498886 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
 		42E5C03128CB791B00A54B8B /* LaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchVC.swift; sourceTree = "<group>"; };
@@ -256,10 +258,10 @@
 		4227C2AD28A963130096428C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				42C2534C28B11A6200498886 /* LinkItem.swift */,
 				4225166028C8D6E1007D537F /* Task.swift */,
 				42B4687328C927B8003C02AC /* Users.swift */,
 				421493BD28D51888003757D4 /* DatabaseManager.swift */,
+				42BB331128E2346F0035329F /* StorageManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -305,6 +307,7 @@
 		427748AF28DF029A005EEDC1 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				42C2534C28B11A6200498886 /* LinkItem.swift */,
 				4227C2B128A963CE0096428C /* AttributedString+Extension.swift */,
 				427748B028DF02BF005EEDC1 /* UIColor+Extension.swift */,
 				427748B228DF02F0005EEDC1 /* UIFont+Extension.swift */,
@@ -470,6 +473,7 @@
 				427748B928DF03C3005EEDC1 /* UIImageView+Extension.swift in Sources */,
 				4227C2B628A9646A0096428C /* CustomImageView.swift in Sources */,
 				4202AE7028CB3DD000990057 /* SettingPageVC.swift in Sources */,
+				42BB331228E2346F0035329F /* StorageManager.swift in Sources */,
 				427748B528DF030F005EEDC1 /* VC+Extension.swift in Sources */,
 				426FE2E228A968BF0032FA83 /* TasksVC.swift in Sources */,
 				42C2534D28B11A6200498886 /* LinkItem.swift in Sources */,
