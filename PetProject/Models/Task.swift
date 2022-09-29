@@ -21,12 +21,12 @@ class Task:Hashable{
     var description:String
     var ref:DatabaseReference?
 //    var completed = false
-    
     init(title:String,description:String) {
         self.title = title
         self.description = description
         self.ref = nil
     }
+    
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String:AnyObject]
         title = snapshotValue["title"] as! String
