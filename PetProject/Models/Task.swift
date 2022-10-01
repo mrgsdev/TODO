@@ -26,6 +26,7 @@ class Task:Hashable{
         self.description = description
         self.ref = nil
     }
+    
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String:AnyObject]
         title = snapshotValue["title"] as! String
