@@ -54,7 +54,6 @@
 		427748B928DF03C3005EEDC1 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427748B828DF03C3005EEDC1 /* UIImageView+Extension.swift */; };
 		427748BB28DF03FE005EEDC1 /* Safari+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427748BA28DF03FE005EEDC1 /* Safari+Extension.swift */; };
 		427748BD28DF042C005EEDC1 /* BarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427748BC28DF042C005EEDC1 /* BarButtonItem+Extension.swift */; };
-		429BF97028DDE32A0022CEF2 /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429BF96F28DDE32A0022CEF2 /* Progress.swift */; };
 		42B4687428C927B8003C02AC /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B4687328C927B8003C02AC /* Users.swift */; };
 		42BB331228E2346F0035329F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB331128E2346F0035329F /* StorageManager.swift */; };
 		42C2534B28B111FA00498886 /* AboutDevVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C2534A28B111FA00498886 /* AboutDevVC.swift */; };
@@ -114,7 +113,6 @@
 		427748B828DF03C3005EEDC1 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		427748BA28DF03FE005EEDC1 /* Safari+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Safari+Extension.swift"; sourceTree = "<group>"; };
 		427748BC28DF042C005EEDC1 /* BarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarButtonItem+Extension.swift"; sourceTree = "<group>"; };
-		429BF96F28DDE32A0022CEF2 /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
 		42B4687328C927B8003C02AC /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		42BB331128E2346F0035329F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		42C2534A28B111FA00498886 /* AboutDevVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutDevVC.swift; path = PetProject/Controllers/AboutDevVC.swift; sourceTree = SOURCE_ROOT; };
@@ -223,7 +221,6 @@
 				4227C2AD28A963130096428C /* Models */,
 				4227C2AC28A9630F0096428C /* Views */,
 				4227C2AB28A963090096428C /* Controllers */,
-				429BF96F28DDE32A0022CEF2 /* Progress.swift */,
 			);
 			path = PetProject;
 			sourceTree = "<group>";
@@ -460,7 +457,6 @@
 				426FE2D428A968250032FA83 /* ProfileVC.swift in Sources */,
 				426FE2E028A968AA0032FA83 /* DeleteAccountVC.swift in Sources */,
 				427748BB28DF03FE005EEDC1 /* Safari+Extension.swift in Sources */,
-				429BF97028DDE32A0022CEF2 /* Progress.swift in Sources */,
 				4227C2B828A9647C0096428C /* CustomView.swift in Sources */,
 				426FE2D828A9685A0032FA83 /* ChangeNameVC.swift in Sources */,
 				426FE2CC28A966DB0032FA83 /* RegisterVC.swift in Sources */,

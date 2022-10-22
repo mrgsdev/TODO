@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class LaunchVC: UIViewController {
     //MARK: Create UI with Code
     private let imageNotes: UIImageView = {
